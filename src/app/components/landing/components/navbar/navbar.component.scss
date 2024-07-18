@@ -1,0 +1,15 @@
+.wrapper{
+    background-color: white;
+    display: flex;
+    width: 70%;    
+    border-radius: 12px;
+    justify-content: space-around;
+
+    a.nav-item{
+        font-family: "Open Sans", sans-serif;
+        color: #db9a60;
+        text-decoration: none;
+        padding: 5px 0;
+        margin: 0 5px;
+    }
+}
