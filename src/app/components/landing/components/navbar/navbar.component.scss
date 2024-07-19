@@ -1,7 +1,9 @@
+@import '@root/styles.scss';
+
 .wrapper{
     background-color: white;
     display: flex;
-    width: 70%;    
+    width: $nav-width;
     border-radius: 12px;
     justify-content: space-around;
 
