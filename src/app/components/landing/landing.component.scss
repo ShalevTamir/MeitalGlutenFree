@@ -7,12 +7,26 @@ section#landing-page{
     background-size: cover;
     background-repeat: no-repeat;
     $items-margin-top: 15%;
-
+    
+    #logo{
+        $logo-width: 100px;
+        position: absolute;
+        background: url('@images/logo.png');
+        width: $logo-width;
+        margin-top: 0.3%;
+        // right: calc(((100vw - $nav-width) / 4) - $logo-width / 2);
+        right: 0.3%;
+        aspect-ratio: 1 / 1;
+        background-repeat: no-repeat;
+        background-size: contain;
+        
+        border-radius: 20%;
+    }
 
     #details {
         position: absolute;
         top: $items-margin-top;
-        right: calc((100% - $nav-width) / 2);
+        right: calc((100vw - $nav-width) / 2);
         width: $nav-width;
         align-items: flex-end;
         grid-row: 2;        
@@ -20,6 +34,27 @@ section#landing-page{
         display: flex;
         flex-direction: column;
         font-family: "Varela Round", sans-serif;
+
+
+        .title{
+            span{
+                $font-size: 7rem;
+                color: white;
+                text-shadow: 1px 1px 3px black;
+                font-size: $font-size;
+                font-weight: bold;
+                text-align: right;
+                display: block;
+                line-height: 7rem;
+            }
+        }
+        .subtitle{
+            margin-top: 2%;
+            font-family: "Open Sans", sans-serif;
+            color: #bf773c;
+            font-size: 3rem; 
+            font-weight: bold;
+        }
     }
 
     #social-media{

@@ -25,7 +25,8 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "@root/*": ["src/*"]
+      "@root/*": ["src/*"],
+      "@images/*": ["src/assets/images/*"]
     }
   },
   "angularCompilerOptions": {

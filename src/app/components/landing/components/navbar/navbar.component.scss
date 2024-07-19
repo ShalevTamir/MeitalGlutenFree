@@ -8,10 +8,13 @@
     justify-content: space-around;
 
     a.nav-item{
-        font-family: "Open Sans", sans-serif;
+        font-family: "Varela Round", sans-serif;
         color: #db9a60;
+        font-size: 1.2rem;
+        letter-spacing: 2.5px;
         text-decoration: none;
-        padding: 5px 0;
+        // font-weight: bold;
+        padding: 6px 0px;
         margin: 0 5px;
     }
 }
