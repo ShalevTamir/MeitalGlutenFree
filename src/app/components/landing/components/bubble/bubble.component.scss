@@ -1,0 +1,18 @@
+#wrapper{
+    $bubble-size: 230px;
+    background-image: url('@images/bubble.png');
+    width: $bubble-size;
+    aspect-ratio: 1 / 1;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+
+    #description{
+        font-family: "Varela Round", sans-serif;
+        color: #bf773c;
+        font-weight: bold;
+        font-size: calc($bubble-size * 0.12);
+        text-align: center;
+        letter-spacing: 2px;
+    }
+}

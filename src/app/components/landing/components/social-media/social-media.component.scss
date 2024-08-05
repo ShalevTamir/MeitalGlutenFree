@@ -1,0 +1,21 @@
+
+$logo-names: 'whatsapp', 'instagram', 'facebook', 'phone';
+@each $logo-name in $logo-names{
+    .#{$logo-name}{
+        background: url('@images/#{$logo-name}Logo.png');
+    }
+}
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    border-radius: 15px 0 0 15px;
+    background-color: #bf773c;
+    .logo{
+        margin: 5vh 25px;
+        background-size: cover;
+        width: 25px;
+        aspect-ratio: 1 / 1;
+    }
+}

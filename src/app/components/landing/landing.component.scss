@@ -5,22 +5,21 @@ section#landing-page{
     height: 100vh;
     background: url('/assets/images/landingPageBackground.png');
     background-size: cover;
+    // background-position: ;
     background-repeat: no-repeat;
-    $items-margin-top: 15%;
+    $items-margin-top: 20%;
     
-    #logo{
-        $logo-width: 100px;
+    app-logo{
         position: absolute;
-        background: url('@images/logo.png');
-        width: $logo-width;
         margin-top: 0.3%;
         // right: calc(((100vw - $nav-width) / 4) - $logo-width / 2);
-        right: 0.3%;
-        aspect-ratio: 1 / 1;
-        background-repeat: no-repeat;
-        background-size: contain;
-        
-        border-radius: 20%;
+        right: 75px;
+    }
+
+    app-social-media{
+        position: absolute;
+        top: $items-margin-top;
+        right: 0;
     }
 
     #details {
@@ -29,8 +28,6 @@ section#landing-page{
         right: calc((100vw - $nav-width) / 2);
         width: $nav-width;
         align-items: flex-end;
-        grid-row: 2;        
-        grid-column: 1;
         display: flex;
         flex-direction: column;
         font-family: "Varela Round", sans-serif;
@@ -55,14 +52,5 @@ section#landing-page{
             font-size: 3rem; 
             font-weight: bold;
         }
-    }
-
-    #social-media{
-        position: absolute;
-        top: $items-margin-top;
-        right: 0;
-        height: 500px;
-        width: 30px;
-        border: 1px solid black;
-    }
+    }   
 }
