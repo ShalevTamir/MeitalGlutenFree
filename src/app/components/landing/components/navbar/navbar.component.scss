@@ -6,10 +6,12 @@
     width: $nav-width;
     border-radius: 12px;
     justify-content: space-around;
-
+    box-shadow: #422800 3px 3px 0 0;
+    border: 1px solid #422800;
+    
     a.nav-item{
         font-family: "Varela Round", sans-serif;
-        color: #db9a60;
+        color: #89603c;
         font-size: 1.2rem;
         letter-spacing: 2.5px;
         text-decoration: none;
