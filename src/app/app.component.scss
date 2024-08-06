@@ -1,25 +1,7 @@
-
-#container{
-    // overflow-y: hidden;
-    // overflow-x: hidden;
-
-    #background{
-        --size: 50px;
-        --positionFactor: 0.5;
-        --position: calc(var(--size) * var(--positionFactor));
-        --radius: calc(var(--size) * sqrt(var(--positionFactor) * var(--positionFactor) + 1));
-    
-        $gradient-count: 2;
-
-        @for $i from 1 through $gradient-count {
-            mask: 
-                radial-gradient(var(--radius) at calc(var(--size) + var(--position)) 50%, blue 100%, #0000 100.5%) 0 calc(50% + 2* var(--size)) / 100% calc(4 * var(--size)) no-repeat,
-                radial-gradient(var(--radius) at calc(-1 * var(--position)) 50%, #0000 100%,red 100.5%) var(--size) 50% / 100% calc(4 * var(--size)) no-repeat;
-        } 
-
-        height: 100vh;
-        width: 100vw;
-        background: #e9c097;
-        // transform: rotateZ(-45deg);
-    }
+app-navbar{
+    width: 100%;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    margin-top: 2%;
 }
