@@ -18,16 +18,34 @@
         fill: white;
     }
     .logo{
-        margin: 5vh 25px;
-        // background-size: cover;
-        width: 35px;
-        // path{
-        //     fill: white;
-        // }
+        margin: 5vh clamp(20px,1.8vw,25px);
+        width: clamp(33px, 2vw ,35px);
+      
         aspect-ratio: 1 / 1;
 
         &:hover{
             cursor: pointer;
         }
+    }
+}
+
+@media (max-width: 950px){
+    .wrapper .logo{
+        margin-top: clamp(15px,4vw,4vw);
+        margin-bottom: clamp(15px,4vw,4vw);
+    }
+}
+
+@media (max-width: 750px){
+    .wrapper{
+        $margin: 9%;
+        width: calc(100% - 2 * $margin);
+        margin: 0 $margin;
+        border-radius: 15px 15px 0 0;
+        justify-content: space-evenly;
+        .logo{
+            margin: clamp(20px, 1.8vw, 20px) clamp(4vw,4vw,26px);
+        }
+        flex-direction: row;
     }
 }

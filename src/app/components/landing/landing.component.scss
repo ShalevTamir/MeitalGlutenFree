@@ -22,6 +22,14 @@ section#landing-page{
         right: 0;
     }
 
+    @media (max-width: 750px){
+        app-social-media{
+            bottom: 0;
+            top: auto;
+            left: 0;
+        }
+    }
+    
     #details {
         position: absolute;
         top: $items-margin-top;
