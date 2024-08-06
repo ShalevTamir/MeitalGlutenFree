@@ -8,5 +8,6 @@ import { Component} from '@angular/core';
   styleUrl: './social-media.component.scss'
 })
 export class SocialMediaComponent {
-  protected readonly phoneNumber: string = "0525696806";    
+  protected readonly localPhoneNumber: string = "0525696806";
+  protected readonly internationalPhoneNumber: string = "972" + this.localPhoneNumber.slice(1);    
 }
