@@ -4,10 +4,12 @@
     background-color: white;
     display: flex;
     width: $nav-width;
+    min-width: 560px;
     border-radius: 12px;
-    justify-content: space-around;
+    justify-content: space-evenly;
     box-shadow: #422800 3px 3px 0 0;
     border: 1px solid #422800;
+    box-sizing: border-box;
     
     a.nav-item{
         font-family: "Varela Round", sans-serif;
@@ -18,5 +20,25 @@
         // font-weight: bold;
         padding: 6px 0px;
         margin: 0 5px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
+
+    .partition{
+        width: 3px;
+        height: 100%;
+        background: #422800;
+    }
+}
+
+@media (max-width: 660px){
+    .wrapper{
+        min-width: auto;
+        width: 85vw;   
+        a.nav-item{
+            padding: 3px 0;
+            font-size: min(1.1rem, 5vw);
+        }
     }
 }
