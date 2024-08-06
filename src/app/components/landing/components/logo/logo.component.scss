@@ -1,7 +1,7 @@
 #wrapper {
     $logo-total-size: 120px;
     $logo-img-size: calc($logo-total-size * 0.65);
-    background-image: url('@images/brownBubble.png');
+    background-image: url('@images/brown-bubble.png');
     width: $logo-total-size;
     aspect-ratio: 1 / 1;
     background-size: cover;
