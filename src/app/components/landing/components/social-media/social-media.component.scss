@@ -1,10 +1,10 @@
 
-$logo-names: 'whatsapp', 'instagram', 'facebook', 'phone';
-@each $logo-name in $logo-names{
-    .#{$logo-name}{
-        background: url('@images/#{$logo-name}Logo.png');
-    }
-}
+// $logo-names: 'whatsapp', 'instagram', 'facebook', 'phone';
+// @each $logo-name in $logo-names{
+//     .#{$logo-name}{
+//         background: url('@images/#{$logo-name}Logo.png');
+//     }
+// }
 
 .wrapper{
     display: flex;
@@ -12,10 +12,22 @@ $logo-names: 'whatsapp', 'instagram', 'facebook', 'phone';
     width: fit-content;
     border-radius: 15px 0 0 15px;
     background-color: #bf773c;
+
+    .logo, .logo .filled{
+
+        fill: white;
+    }
     .logo{
         margin: 5vh 25px;
-        background-size: cover;
-        width: 25px;
+        // background-size: cover;
+        width: 35px;
+        // path{
+        //     fill: white;
+        // }
         aspect-ratio: 1 / 1;
+
+        &:hover{
+            cursor: pointer;
+        }
     }
 }
