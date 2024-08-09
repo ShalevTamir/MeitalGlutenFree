@@ -6,6 +6,8 @@
 //     }
 // }
 
+@import '../../landing.component.scss';
+
 .wrapper{
     display: flex;
     flex-direction: column;
@@ -35,7 +37,7 @@
     }
 }
 
-@media (max-width: 750px){
+@media (max-width: #{$snap-to-bottom-width}){
     .wrapper{
         $margin: 9%;
         width: calc(100% - 2 * $margin);
