@@ -1,8 +1,10 @@
 @import '@root/styles.scss';
 
-$snap-to-bottom-width: 750px;
+$snap-to-bottom-width: 1450px;
+$convert-to-mobile-width: 1060px;
 
 section#landing-page{
+    overflow: hidden;
     width: 100vw;
     height: 100vh;
     background: #f1be91;
@@ -53,8 +55,8 @@ section#landing-page{
 
         &.right{
             justify-self: right;                
-            bottom: 32%;
-            right: 4%;
+            bottom: 28%;
+            right: 1%;
         }
 
         &.top-right{
@@ -84,9 +86,7 @@ section#landing-page{
         display: grid;        
         align-items: center;
         justify-items: center;
-        font-family: "Varela Round", sans-serif;        
-
-       
+        font-family: "Rubik", sans-serif;        
 
         img.food-element{
             position: absolute;
@@ -110,7 +110,7 @@ section#landing-page{
             }
 
             &.white-cake-slice{
-                left: -5.5%;
+                left: -2.5%;
                 width: 290px;
             }
 
@@ -136,29 +136,60 @@ section#landing-page{
             }
         }
 
-       
         .title{
             span{
                 $font-size: 5.5rem;
                 color: white;
-                text-shadow: 1px 1px 3px black;
+                text-shadow: 2px 2px 4px black;
                 font-size: $font-size;
-                font-weight: bold;
+                font-weight: 600;
                 display: block;
                 line-height: 7rem;
                 text-align: center;
             }
         }
+
         .subtitle{
             margin-top: 2vh;
-            font-family: "Open Sans", sans-serif;
             color: #bf773c;
+            text-shadow: 1px 1px 0 #BF773C;
             font-size: 3rem; 
             font-weight: bold;
         }
 
         .logo{
             width: 220px;
+        }
+
+        @media (max-width: 1077px){
+            &{
+                width: 100%;
+                min-width: auto;
+
+                img.food-element{
+                    &.cookies{
+                        transform: rotateZ(-22deg);
+                        right: -64.4px;
+                    }
+                    &.chocolate-cake{
+                        left: -100px;
+                    }
+                    &.cupcake{
+                        right: -96.6px;
+                    }
+                    &.white-cake-slice{
+                        left: -134px;
+                    }
+                }
+
+                
+            }
+
+            img.line{
+                &.right,&.left{
+                    display: none;
+                }
+            }
         }
     }   
 }

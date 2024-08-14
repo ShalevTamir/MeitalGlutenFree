@@ -1,4 +1,5 @@
 @import '@root/styles.scss';
+@import '../../landing.component.scss';
 
 .wrapper{
     background-color: white;
@@ -12,7 +13,7 @@
     box-sizing: border-box;
     
     a.nav-item{
-        font-family: "Varela Round", sans-serif;
+        font-family: "Rubik", sans-serif;
         color: #89603c;
         font-size: 1.2rem;
         letter-spacing: 2.5px;
@@ -23,6 +24,19 @@
         display: flex;
         align-items: center;
         text-align: center;
+
+        ::ng-deep .dynamic-new-line{
+            display: none;
+        }
+    }
+
+    @media (max-width: #{$convert-to-mobile-width}){    
+        a.nav-item{
+            padding: 1.5px 0;
+            ::ng-deep .dynamic-new-line{
+                display: block;
+            }
+        }        
     }
 
     .partition{
@@ -30,7 +44,10 @@
         height: 100%;
         background: #422800;
     }
-}
+
+}    
+
+
 
 @media (max-width: 660px){
     .wrapper{

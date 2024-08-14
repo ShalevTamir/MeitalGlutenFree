@@ -20,7 +20,7 @@
     }
     .logo{
         margin: 5vh clamp(20px,1.8vw,25px);
-        width: clamp(33px, 2vw ,35px);
+        width: clamp(33px, 2vw ,40px);
       
         aspect-ratio: 1 / 1;
 
@@ -39,13 +39,15 @@
 
 @media (max-width: #{$snap-to-bottom-width}){
     .wrapper{
-        $margin: 9%;
-        width: calc(100% - 2 * $margin);
-        margin: 0 $margin;
+        max-width: 630px;
+        width: 78%;
+        margin: 0 auto;
         border-radius: 15px 15px 0 0;
         justify-content: space-evenly;
         .logo{
-            margin: clamp(20px, 1.8vw, 20px) clamp(4vw,4vw,26px);
+            // margin: clamp(20px, 1.8vw, 20px) clamp(4vw,4vw,26px);
+            width: 37px;
+            margin: 14px 4vw;
         }
         flex-direction: row;
     }
