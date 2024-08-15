@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, viewChild } from '@angular/core';
+import { injectDynamicNewLines } from '@root/common/utils/htmlUtils';
 
 @Component({
   selector: 'app-navbar',
@@ -14,9 +15,7 @@ export class NavbarComponent implements AfterViewInit{
     let wrapperChildren: Element[] = Array.from(this.wrapper.nativeElement.children);
     let navItems = wrapperChildren.filter(wrapperChild => wrapperChild.classList.contains(this.navItemClass));
     navItems.forEach(navItem => {
-      navItem.innerHTML = navItem.innerHTML
-      .split(' ')      
-      .join(' <br class="dynamic-new-line">');
+      injectDynamicNewLines(navItem as HTMLElement);
     });
   }
   

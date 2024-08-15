@@ -2,7 +2,8 @@
 @import '../../landing.component.scss';
 
 .wrapper{
-    background-color: white;
+    z-index: 2;
+    background-color: #fbeee0;
     display: flex;
     width: $nav-width;
     min-width: 560px;
@@ -14,11 +15,10 @@
     
     a.nav-item{
         font-family: "Rubik", sans-serif;
-        color: #89603c;
+        color: #422800;
         font-size: 1.2rem;
         letter-spacing: 2.5px;
         text-decoration: none;
-        // font-weight: bold;
         padding: 6px 0px;
         margin: 0 5px;
         display: flex;

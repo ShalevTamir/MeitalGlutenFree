@@ -6,7 +6,7 @@ $convert-to-mobile-width: 1060px;
 section#landing-page{
     overflow: hidden;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     background: #f1be91;
     background-size: cover;
     display: flex;
@@ -76,6 +76,11 @@ section#landing-page{
     
             
         }
+        @media(max-width: 1300px){
+            &.right, &.left{
+                display: none;
+            }
+        }
     }
 
     #details {
@@ -87,6 +92,7 @@ section#landing-page{
         align-items: center;
         justify-items: center;
         font-family: "Rubik", sans-serif;        
+
 
         img.food-element{
             position: absolute;
@@ -137,6 +143,7 @@ section#landing-page{
         }
 
         .title{
+            z-index: 2;
             span{
                 $font-size: 5.5rem;
                 color: white;
@@ -150,14 +157,21 @@ section#landing-page{
         }
 
         .subtitle{
+            z-index: 2;
             margin-top: 2vh;
             color: #bf773c;
             text-shadow: 1px 1px 0 #BF773C;
             font-size: 3rem; 
             font-weight: bold;
+            text-align: center;
+
+            ::ng-deep .dynamic-new-line{
+                display: none;
+            }
         }
 
         .logo{
+            z-index: 2;
             width: 220px;
         }
 
@@ -172,13 +186,13 @@ section#landing-page{
                         right: -64.4px;
                     }
                     &.chocolate-cake{
-                        left: -100px;
+                        left: max(-22.34vw, -100px);
                     }
                     &.cupcake{
-                        right: -96.6px;
+                        right: max(-96.6px, -9vw);
                     }
                     &.white-cake-slice{
-                        left: -134px;
+                        left: max(-138px,-26.8vw);
                     }
                 }
 
@@ -188,6 +202,134 @@ section#landing-page{
             img.line{
                 &.right,&.left{
                     display: none;
+                }
+            }
+        }
+
+        @media (max-width: #{$convert-to-mobile-width}){
+            img.line{
+                
+                &.middle{
+                    top: -5%;
+                }
+            }
+            &{
+                img.food-element{
+                    
+                    &.chocolate-cake{
+                        top: -5%;
+                    }
+                    &.cookies{
+                        top: -10%;
+                    }
+                }
+                margin-top: 5vh;
+                .subtitle{
+                    margin-top: 1vh;
+                    ::ng-deep .dynamic-new-line{
+                        display: block;
+                    }
+                }
+            }
+            .button-74{
+                margin-top: 0.8vh;
+            }
+        }
+
+        @media (max-width: 770px){
+            img.line{
+                
+                &.middle{
+                    max-width: 1176px;
+                    width: 152vw;
+                    top: -6%;
+                    transform: rotateZ(-12deg);
+                }
+            }
+            &{                
+                .logo{
+                    width: 37vw;
+                    max-width: 193px;
+                    margin-bottom: 2vh;
+                }
+                .subtitle{
+                    margin-top: 1vh;
+                    font-size: 2.7rem;
+                }
+                .title span{
+                    font-size: 4rem;
+                    line-height: normal;
+                }
+                img.food-element{
+                    &.chocolate-cake{
+                        width: 47vw;
+                        max-width: 260px;
+                        top: -9vh;
+                    }
+
+                    &.cookies{
+                        width: calc(200px - 3vw);
+                        max-width: 185px;
+                        top: -14.38vh;
+                    }
+
+                    &.cupcake{
+                        bottom: 29%;
+                        width: 31vw;
+                        max-width: 162px;
+                        right: max(-83.6px, -11.5vw);
+                    }
+
+                    &.white-cake-slice{
+                        max-width: 257px;                        
+                        top: max(29%, 25vw);
+                        width: 51vw;
+                    }
+                }
+            }
+            .button-74{
+                margin-top: 4.5vh;
+            }
+        }
+
+        @media(max-width: 500px){
+            &{
+                .button-74{
+                    margin-top: 5.5vh;
+                    font-size: 1.2rem;
+                    padding: 0px 25px;
+                }
+                .logo{
+                    width: 49vw;
+                }
+                .title span{
+                    font-size: 14vw;
+                }
+                .subtitle{
+                    margin-top: 4vh;
+                    font-size: 10vw;
+                }
+                img.food-element{
+                    &.cookies{
+                        max-width: 146px;
+                        top: calc(39vw - 31vh);
+                    }
+                    &.chocolate-cake{
+                        width: 50vw;
+                        top: calc(39vw - 28vh);
+                        max-width: 205px;
+                    }
+                    &.white-cake-slice{
+                        width: 65vw;
+                        left: max(-138px,-32vw);
+                        top: calc(39vw - 5vh);
+                    }
+                    &.cupcake{
+                        width: 41vw;
+                        right: max(-82.6px, -18.5vw);
+                        top: calc(39vw - 1vh);
+                        bottom: auto;
+                    }
                 }
             }
         }
