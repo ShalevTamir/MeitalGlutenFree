@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { LandingComponent } from "./components/landing/landing.component";
 import { NavbarComponent } from "./components/landing/components/navbar/navbar.component";
+import { MenuComponent } from "./components/menu/menu.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, LandingComponent, NavbarComponent],
+  imports: [CommonModule, RouterOutlet, LandingComponent, NavbarComponent, MenuComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
