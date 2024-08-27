@@ -1,0 +1,87 @@
+.food-card-wrapper{
+    aspect-ratio: 88 / 129;
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    
+    .seperating-line{
+        width: 100%;
+        height: 1%;
+        background: white;
+    }
+
+    img{
+        border-radius: 52px 52px 0 0;
+        box-shadow: 0 4px 12px 0 #000000a6;
+        height: 39%;
+        object-fit: cover;
+    }
+
+    .background-wrapper{
+        background-image: url('@images/card-background.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        border-radius: 0 0 52px 52px;
+        box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.6509803922);
+        height: 60%;
+        
+        .main-wrapper{
+            height: 69%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            font-family: "Rubik", sans-serif;        
+            justify-content: space-evenly;
+            padding: 0 10%;
+            color: white;
+            
+            .price{
+                font-size: 190%;
+                font-weight: 600;
+                text-shadow: 2px 2px 4px #000000;
+            }
+            .description{
+                font-size: 170%;
+                font-weight: 500;
+                text-shadow: 2px 2px 4px #000000ad;
+            }
+        }
+        .secondary-wrapper{
+            display: flex;
+            height: 31%;
+            align-items: center;
+            justify-content: center;
+
+            .button-74 {
+                background-color: #fbeee0;
+                border: 2px solid #422800;
+                border-radius: 30px;
+                box-shadow: #422800 4px 4px 0 0;
+                color: #422800;
+                cursor: pointer;
+                display: inline-block;
+                font-family: "Varela Round", sans-serif;
+                text-shadow: 0 0 0px black;
+                font-size: 21px;
+                padding: 2px 35px;
+                line-height: 41px;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+                transition: width 0.5s;
+            
+                &:hover{
+                    background-color: #fff;
+                }
+            
+                &:active{
+                    box-shadow: #422800 2px 2px 0 0;
+                    transform: translate(2px, 2px);
+                }
+            }
+        }
+    }
+}
