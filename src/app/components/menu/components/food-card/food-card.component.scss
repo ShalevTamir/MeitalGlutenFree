@@ -1,8 +1,11 @@
+@use '../../../landing/landing.component.scss' as *;
+
 .food-card-wrapper{
     aspect-ratio: 88 / 129;
     width: 340px;
     display: flex;
     flex-direction: column;
+    margin: 0 30px;
     
     .seperating-line{
         width: 100%;
@@ -41,8 +44,9 @@
                 font-weight: 600;
                 text-shadow: 2px 2px 4px #000000;
             }
+
             .description{
-                font-size: 170%;
+                font-size: 176%;
                 font-weight: 500;
                 text-shadow: 2px 2px 4px #000000ad;
             }
@@ -81,6 +85,21 @@
                     box-shadow: #422800 2px 2px 0 0;
                     transform: translate(2px, 2px);
                 }
+            }
+        }
+    }
+}
+
+@media (max-width: #{$snap-to-bottom-width}){
+    .food-card-wrapper{
+        width: 310px;
+
+        .background-wrapper .main-wrapper{
+            .price{
+                font-size: 180%;
+            }
+            .description{
+                font-size: 160%;
             }
         }
     }
