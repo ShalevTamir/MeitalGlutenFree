@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { LandingComponent } from "./components/landing/landing.component";
@@ -13,5 +13,11 @@ import { MenuComponent } from "./components/menu/menu.component";
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  @ViewChild(MenuComponent) menuComponent!: MenuComponent;
   title = 'MeitalGlutenFree';
+
+  scrollToMenu(){
+    const menuElement: HTMLElement = this.menuComponent.ElementRef.nativeElement;
+    menuElement.scrollIntoView({ behavior: 'smooth' });
+  }
 }

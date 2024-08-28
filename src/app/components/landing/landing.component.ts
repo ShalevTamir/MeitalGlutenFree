@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { SocialMediaComponent } from "./components/social-media/social-media.component";
 import { BubbleComponent } from "./components/bubble/bubble.component";
@@ -13,8 +13,14 @@ import { injectDynamicNewLines } from '@root/common/utils/htmlUtils';
 })
 export class LandingComponent implements AfterViewInit{
   @ViewChild('subtitle') subtitle!: ElementRef<HTMLElement>
+  @Output() scrollToMenuEvent = new EventEmitter();
+
   ngAfterViewInit(): void {
     injectDynamicNewLines(this.subtitle.nativeElement, 3);
+  }
+
+  scrollToMenu(){
+    this.scrollToMenuEvent.emit();
   }
 
 }
