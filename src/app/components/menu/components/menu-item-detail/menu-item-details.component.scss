@@ -1,0 +1,76 @@
+.detail-wrapper{
+    height: 80vh;
+    width: 580px;
+    display: flex;
+    flex-direction: column;
+
+    img{
+        height: 45%;
+        object-fit: cover;
+    }
+    
+    font-family: "Rubik", sans-serif;        
+
+    .text-wrapper{
+        display: flex;
+        flex-direction: column;
+        background: #BF773C;
+
+        & > *{
+            border: 6px solid white;
+        }
+
+        .card-name{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 38px 38px 0 0;
+
+            span{
+                font-size: 2rem;
+            }
+        }
+
+        .card-description{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            border-radius: 0 0 38px 38px;
+
+            .description{
+                font-weight: 500;
+                font-size: 1.8rem;
+            }
+
+            .price{
+                font-size: 2.2rem;
+            }
+        }
+    }
+    
+    .call-info{
+        .click-phone-number-text{
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .phone-number{
+            font-size: 2.2rem;
+            padding: 7px 15px;
+            box-shadow: 3px 4px 0 #422800;
+            border: 1px solid #422800;
+            border-radius: 52px;
+        }
+        
+        &::before{
+            content: "";
+            $top-offset: 100px;
+            top: calc(-1 * $top-offset);
+            left: 0;
+            height: calc(100% + $top-offset);
+            width: 100%;
+
+            background-image: linear-gradient(180deg, #782100 0%, #B0571F 50%, #BF773C 100%);
+        }
+    }
+}
