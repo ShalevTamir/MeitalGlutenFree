@@ -1,76 +1,139 @@
-.detail-wrapper{
-    height: 80vh;
-    width: 580px;
-    display: flex;
-    flex-direction: column;
-
-    img{
-        height: 45%;
-        object-fit: cover;
-    }
+:host{
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
     
-    font-family: "Rubik", sans-serif;        
+    $card-border-radius: 30px;
 
-    .text-wrapper{
+    &::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #0000006e;
+        backdrop-filter: blur(2px);
+        z-index: -1;
+    }
+
+    .background-overlay{
+        width: 100%;
+        height: 100%;
         display: flex;
-        flex-direction: column;
-        background: #BF773C;
-
-        & > *{
-            border: 6px solid white;
-        }
-
-        .card-name{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 38px 38px 0 0;
-
-            span{
-                font-size: 2rem;
-            }
-        }
-
-        .card-description{
+        justify-content: center;
+        align-items: center;
+    
+        .detail-wrapper{
+            width: 580px;
             display: flex;
             flex-direction: column;
-            justify-content: space-evenly;
-            border-radius: 0 0 38px 38px;
-
-            .description{
-                font-weight: 500;
-                font-size: 1.8rem;
-            }
-
-            .price{
-                font-size: 2.2rem;
-            }
-        }
-    }
-    
-    .call-info{
-        .click-phone-number-text{
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .phone-number{
-            font-size: 2.2rem;
-            padding: 7px 15px;
-            box-shadow: 3px 4px 0 #422800;
-            border: 1px solid #422800;
-            border-radius: 52px;
-        }
+            color: white;
+            font-family: "Rubik", sans-serif;        
         
-        &::before{
-            content: "";
-            $top-offset: 100px;
-            top: calc(-1 * $top-offset);
-            left: 0;
-            height: calc(100% + $top-offset);
-            width: 100%;
-
-            background-image: linear-gradient(180deg, #782100 0%, #B0571F 50%, #BF773C 100%);
+            img{
+                height: 60%;
+                object-fit: cover;
+                border-radius: $card-border-radius $card-border-radius 0 0;
+                box-shadow: 2px 2px 20px #000000;
+            }
+            
+            $top-offset: 45px;
+            $text-wrapper-border-radius: 38px;
+        
+            .text-wrapper{
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                top: calc(-1 * $top-offset);
+                position: relative;
+                
+                & > *{
+                    background: #BF773C;
+                    border: 6px solid white;
+                }
+        
+                .card-name{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: $text-wrapper-border-radius $text-wrapper-border-radius 0 0;
+        
+                    span{
+                        font-size: 2rem;
+                        margin: 7px 0;
+                        font-weight: 700;
+                        text-shadow: 1px 1px 0 #000000;
+                    }
+                }
+        
+                .card-description{
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    border-radius: 0 0 $text-wrapper-border-radius $text-wrapper-border-radius;
+        
+                    .description{
+                        font-weight: 500;
+                        font-size: 1.8rem;
+                        font-weight: 500;
+                        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.81);
+                        padding: 0 10px;
+                        margin: 7px 0;
+                    }
+        
+                    .price{
+                        font-size: 2.2rem;
+                        font-weight: 600;
+                        text-shadow: 1px 2px 4px #000000;
+                        margin: 7px 0;
+                    }
+                }
+            }
+            
+            .call-info{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                position: relative;
+                $phone-number-shadow-offset: 2px;
+        
+                
+                .click-phone-number-text{
+                    font-weight: 700;
+                    font-size: 2rem;
+                    text-shadow: 1px 1px 3.6px rgba(0, 0, 0, 0.94);
+                    
+                }
+                
+                .phone-number{
+                    font-size: 2.2rem;
+                    padding: 7px 15px;
+                    box-shadow: 3px 4px 0 #422800;
+                    border: 1px solid #422800;
+                    border-radius: 52px;
+                    background: #BF773C;
+                    font-weight: 600;
+                    text-shadow: $phone-number-shadow-offset $phone-number-shadow-offset 4px #000000;
+                    margin: 7px 0;
+                }
+                
+                &::before{
+                    box-shadow: 2px 2px 20px #000000;
+                    $border-radius-difference: 20px;
+                    z-index: -1;
+                    content: "";
+                    position: absolute;
+                    top: calc(-1 * ($top-offset + $text-wrapper-border-radius));
+                    left: 0;
+                    height: calc(100% + $top-offset + $text-wrapper-border-radius + $phone-number-shadow-offset * 2);
+                    width: 100%;
+                    border-radius: 0 0 calc($card-border-radius - $border-radius-difference) calc($card-border-radius - $border-radius-difference);
+                    background-image: linear-gradient(180deg, #782100 0%, #B0571F 50%, #BF773C 100%);
+                }
+            }
         }
-    }
+    }   
 }
