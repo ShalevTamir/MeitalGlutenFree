@@ -140,13 +140,20 @@
                 .phone-number{
                     font-size: 2.2rem;
                     padding: 7px 15px;
-                    box-shadow: 3px 4px 0 #422800;
-                    border: 1px solid #422800;
+                    box-shadow: 4px 4px 0 #422800;
+                    border: 2px solid #422800;
                     border-radius: 52px;
                     background: #BF773C;
                     font-weight: 600;
                     text-shadow: $phone-number-shadow-offset $phone-number-shadow-offset 4px #000000;
                     margin: 7px 0 28px 0;
+                    text-decoration: none;
+                    color: white;
+
+                    &:active{
+                        box-shadow: #422800 2px 2px 0 0;
+                        transform: translate(2px, 2px);
+                    }
                 }
                 
                 &::before{

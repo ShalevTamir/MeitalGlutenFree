@@ -21,3 +21,7 @@ export function injectDynamicNewLines(htmlElement: HTMLElement, wordsInLine: num
     htmlElement.innerHTML = newElementText;
   
 }
+
+export function stopEventPropagation(event: Event){
+    event.stopPropagation();
+}

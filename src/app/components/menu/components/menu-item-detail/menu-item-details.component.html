@@ -1,5 +1,5 @@
-<div class="background-overlay">
-    <div class="detail-wrapper" [@openClose]="viewStateToAnimationState()">
+<div class="background-overlay" (click)="close()">
+    <div class="detail-wrapper" [@openClose]="viewStateToAnimationState()" (click)="stopPropagationFuncRef($event)">
         <div></div>
         <button class="close-button" (click)="close()"></button>
         <img src="assets/images/menu-items/{{cardData.imgName}}" alt="menu-item-{{cardData.cardId}}">
@@ -15,7 +15,7 @@
     
         <div class="call-info">
             <span class="click-phone-number-text">להזמנה לחצו</span>
-            <span class="phone-number">{{localPhoneNumber}}</span>
+            <a class="phone-number" href="tel:{{localPhoneNumber}}">{{localPhoneNumber}}</a>
         </div>
     </div>
 </div>

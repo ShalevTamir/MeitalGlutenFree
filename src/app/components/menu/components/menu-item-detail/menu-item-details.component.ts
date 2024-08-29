@@ -4,6 +4,7 @@ import { CardData } from '../../models/card-data';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { parseStringDelayToMillis } from './services/timeUtils';
 import { ViewState } from './enums/view-state.enums';
+import { stopEventPropagation } from '@root/common/utils/htmlUtils';
 
 const animationDuration = '0.4s';
 const openStateStyle = style({
@@ -37,6 +38,7 @@ export class MenuItemDetailComponent{
   private readonly _hiddenClassName = 'hidden';
   private readonly _nativeElement: HTMLElement;
   protected state = ViewState.CLOSE;
+  protected stopPropagationFuncRef = stopEventPropagation
 
   constructor(elementRef: ElementRef){
     this._nativeElement = elementRef.nativeElement;
