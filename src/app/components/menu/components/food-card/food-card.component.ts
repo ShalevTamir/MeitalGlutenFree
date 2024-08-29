@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CardData as CardData } from '../../models/card-data';
 
 @Component({
@@ -10,4 +10,10 @@ import { CardData as CardData } from '../../models/card-data';
 })
 export class FoodCardComponent {
   @Input({ required: true }) cardData!: CardData;
+  // Emits the if of the card data
+  @Output() public viewItemEvent = new EventEmitter<number>();
+
+  handleViewItem(){
+    this.viewItemEvent.emit(this.cardData.cardId);
+  }
 }

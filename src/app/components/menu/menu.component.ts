@@ -21,6 +21,10 @@ export class MenuComponent {
     ];
   }
 
+  handleViewItem(cardId: number){
+    console.log(cardId);
+  }
+
   get ElementRef(){
     return this._elementRef;
   }
