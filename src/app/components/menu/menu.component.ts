@@ -31,6 +31,7 @@ export class MenuComponent {
     }
     const selectedCard = this.menuItems.find(cardData => cardData.cardId == cardId) as CardData;
     this.currentMenuItemViewed.cardData = selectedCard;
+    this.currentMenuItemViewed.Open();
   }
 
   getMenuItemDetails(){
