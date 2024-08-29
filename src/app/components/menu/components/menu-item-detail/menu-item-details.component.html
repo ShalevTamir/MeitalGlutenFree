@@ -1,6 +1,6 @@
 <div class="background-overlay">
-    <div class="detail-wrapper">
-        <button class="close-button" (click)="handleClose()"></button>
+    <div class="detail-wrapper" [@openClose]="viewStateToAnimationState()">
+        <button class="close-button" (click)="close()"></button>
         <img src="assets/images/menu-items/{{cardData.imgName}}" alt="menu-item-{{cardData.cardId}}">
         <div class="text-wrapper">
             <div class="card-name">

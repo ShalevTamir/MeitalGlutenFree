@@ -77,6 +77,10 @@
                     background: #BF773C;
                     border: 6px solid white;
                 }
+
+                & *:last-child{
+                    border-top: none;
+                }
         
                 .card-name{
                     display: flex;
@@ -141,7 +145,7 @@
                     background: #BF773C;
                     font-weight: 600;
                     text-shadow: $phone-number-shadow-offset $phone-number-shadow-offset 4px #000000;
-                    margin: 7px 0;
+                    margin: 7px 0 28px 0;
                 }
                 
                 &::before{

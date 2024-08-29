@@ -16,7 +16,7 @@
     img{
         border-radius: 52px 52px 0 0;
         box-shadow: 0 4px 12px 0 #000000a6;
-        height: 39%;
+        height: 46%;
         object-fit: cover;
     }
 
@@ -26,7 +26,7 @@
         background-repeat: no-repeat;
         border-radius: 0 0 52px 52px;
         box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.6509803922);
-        height: 60%;
+        height: 52%;
         
         .main-wrapper{
             height: 69%;
@@ -40,13 +40,13 @@
             color: white;
             
             .price{
-                font-size: 190%;
+                font-size: 160%;
                 font-weight: 600;
                 text-shadow: 2px 2px 4px #000000;
             }
 
             .description{
-                font-size: 176%;
+                font-size: 155%;
                 font-weight: 500;
                 text-shadow: 2px 2px 4px #000000ad;
             }
@@ -96,10 +96,10 @@
 
         .background-wrapper .main-wrapper{
             .price{
-                font-size: 180%;
+                font-size: 154%;
             }
             .description{
-                font-size: 160%;
+                font-size: 149%;
             }
         }
     }
