@@ -21,15 +21,16 @@
         backdrop-filter: blur(2px);
         z-index: -1;
     }
-
+    
     .background-overlay{
         width: 100%;
         height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-    
+        
         .detail-wrapper{
+            transform: scale(0.9);
             width: 580px;
             display: flex;
             flex-direction: column;
@@ -150,7 +151,7 @@
                 
                 &::before{
                     box-shadow: 2px 2px 20px #000000;
-                    $border-radius-difference: 20px;
+                    $border-radius-difference: 10px;
                     z-index: -1;
                     content: "";
                     position: absolute;

@@ -5,14 +5,16 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { parseStringDelayToMillis } from './services/timeUtils';
 import { ViewState } from './enums/view-state.enums';
 
-const animationDuration = '0.2s';
+const animationDuration = '0.4s';
 const openStateStyle = style({
-  transform: 'scale(0.9)'
+  clipPath: 'circle(150% at top right)',
+  opacity: '1'
 });
 const closedStateStyle = style({
-  transform: 'scale(0)'
+  clipPath: 'circle(0 at top right)',
+  opacity: '0.5'
 })
-const animationConfig = animationDuration + ' ease-in';
+const animationConfig = animationDuration + ' ease-in-out';
 
 @Component({
   selector: 'app-menu-item-details',
@@ -24,7 +26,7 @@ const animationConfig = animationDuration + ' ease-in';
     trigger('openClose', [
       state('open', openStateStyle),
       state('closed', closedStateStyle),
-      transition('open <=> closed', [animate(animationConfig)]),
+      transition('closed => open', [animate(animationConfig)]),
       transition(':enter', [closedStateStyle, animate(animationConfig, openStateStyle)])
     ])
   ]
@@ -63,10 +65,8 @@ export class MenuItemDetailComponent{
       case ViewState.OPEN:
         this._nativeElement.classList.remove(this._hiddenClassName);
         break;
-        case ViewState.CLOSE:
-          setTimeout(() => {
-            this._nativeElement.classList.add(this._hiddenClassName);
-        }, parseStringDelayToMillis(animationDuration));
+      case ViewState.CLOSE:
+        this._nativeElement.classList.add(this._hiddenClassName);
         break;
     }
   }
