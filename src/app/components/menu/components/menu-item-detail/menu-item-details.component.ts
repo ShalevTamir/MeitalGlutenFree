@@ -5,6 +5,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { parseStringDelayToMillis } from './services/timeUtils';
 import { ViewState } from './enums/view-state.enums';
 import { stopEventPropagation } from '@root/common/utils/htmlUtils';
+import { BodyScrollHandler } from '@root/common/services/body-scroll-handler.service';
 
 const animationDuration = '0.4s';
 const openStateStyle = style({
@@ -40,16 +41,18 @@ export class MenuItemDetailComponent{
   protected state = ViewState.CLOSE;
   protected stopPropagationFuncRef = stopEventPropagation
 
-  constructor(elementRef: ElementRef){
-    this._nativeElement = elementRef.nativeElement;
+  constructor(private _bodyScrollHandler: BodyScrollHandler, elementRef: ElementRef){
+    this._nativeElement = elementRef.nativeElement;      
   }
 
   protected close(){
-    this.toggleState(ViewState.CLOSE);
+    this.toggleState(ViewState.CLOSE);   
+    this._bodyScrollHandler.enableScroll();
   }
-
+  
   open(){
     this.toggleState(ViewState.OPEN);
+    this._bodyScrollHandler.disableScroll();
   }
 
   viewStateToAnimationState(){
