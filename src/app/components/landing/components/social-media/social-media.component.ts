@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { internationalPhoneNumber, localPhoneNumber } from '@root/app/models/contact-data';
+import { internationalPhoneNumber, localPhoneNumber } from '@root/common/models/contact-data';
 
 @Component({
   selector: 'app-social-media',

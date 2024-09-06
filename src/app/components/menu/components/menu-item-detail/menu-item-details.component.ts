@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { localPhoneNumber } from '@root/app/models/contact-data';
+import { readableLocalPhoneNUmber } from '@root/common/models/contact-data';
 import { CardData } from '../../models/card-data';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { parseStringDelayToMillis } from './services/timeUtils';
@@ -35,7 +35,7 @@ const animationConfig = animationDuration + ' ease-in-out';
 })
 export class MenuItemDetailComponent{
   protected cardData!: CardData
-  protected readonly localPhoneNumber: string = localPhoneNumber;
+  protected readonly localPhoneNumber: string = readableLocalPhoneNUmber;
   private readonly _hiddenClassName = 'hidden';
   private readonly _nativeElement: HTMLElement;
   protected state = ViewState.CLOSE;
