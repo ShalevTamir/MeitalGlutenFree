@@ -60,7 +60,7 @@
             }
 
             img{
-                height: 60%;
+                height: 420px;
                 object-fit: cover;
                 border-radius: $card-border-radius $card-border-radius 0 0;
                 box-shadow: 2px 2px 20px #000000;
@@ -174,4 +174,29 @@
             }
         }
     }   
+}
+
+@media(max-width: 650px){
+    :host .background-overlay .detail-wrapper{
+        width: 100%;
+
+        img{
+            height: 52vh;
+        }
+
+        .text-wrapper{
+            .card-name span{
+                font-size: 1.8rem;
+            }
+
+            .card-description{
+                .description{
+                    font-size: 1.6rem;
+                }
+                .price{
+                    font-size: 1.7rem;
+                }
+            }
+        }
+    }
 }
