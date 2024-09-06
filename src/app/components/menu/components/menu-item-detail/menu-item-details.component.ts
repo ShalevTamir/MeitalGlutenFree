@@ -34,7 +34,7 @@ const animationConfig = animationDuration + ' ease-in-out';
   ]
 })
 export class MenuItemDetailComponent{
-  @Input({ required: true }) cardData!: CardData
+  protected cardData!: CardData
   protected readonly localPhoneNumber: string = localPhoneNumber;
   private readonly _hiddenClassName = 'hidden';
   private readonly _nativeElement: HTMLElement;
@@ -43,6 +43,10 @@ export class MenuItemDetailComponent{
 
   constructor(private _bodyScrollHandler: BodyScrollHandler, elementRef: ElementRef){
     this._nativeElement = elementRef.nativeElement;      
+  }
+
+  setCardData(cardData: CardData){
+    this.cardData = cardData;
   }
 
   protected close(){
