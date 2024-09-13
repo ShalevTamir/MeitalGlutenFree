@@ -1,0 +1,80 @@
+@import '../landing/landing.component.scss';
+
+#about-me-wrapper{
+    $name-font-size: 56px;
+    $proffesion-font-size: calc($name-font-size - 20px);
+    $description-font-size: calc($proffesion-font-size - 15px);
+    width: 100%;
+    background: #C77C3F;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+
+    #background-box{
+        position: absolute;
+        width: 104%;
+        height: 244px;
+        background: #E58F49;
+        border-bottom: 1px solid white;
+        transform: rotateZ(2.2deg);
+        right: -3%;
+        top: -37px;
+        z-index: 0;
+    }
+
+    #profile-wrapper{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 104px;
+
+        span{
+            font-family: "Rubik", sans-serif;
+            color: white;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0, 0.76);
+        }
+
+        #name{
+            font-size: $name-font-size;
+        }
+        #proffesion{
+            font-size: $proffesion-font-size;
+        }
+        #portrait{
+            width: 200px;
+            background-position: 42% 4%;
+            background-size: 230%;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            border: 3px solid white;
+            background-image: url("@images/portrait.jpg");
+        }
+    }
+    #description{
+        margin-top: 25px;
+        right: 2vw;
+        line-height: 28px;
+        position: relative;
+        width: min(77vw, 957px);
+        direction: rtl;
+        text-align: right;
+        display: block;
+        color: white;
+        font-family: "Rubik", sans-serif;
+        font-weight: 500;
+        font-size: $description-font-size;
+        text-shadow: 1px 1px 3px rgb(0 0 0);
+    }
+
+}
+
+@media (max-width: #{$snap-to-bottom-width}){
+    #about-me-wrapper{
+        padding-bottom: 80px;
+    }
+}

@@ -48,6 +48,9 @@
         width: $width;
         border-radius: 15px 15px 0 0;
         justify-content: space-evenly;
+        box-shadow: 0px -2px 6px 0px #e9c097;
+        border: 0.3px solid #e9c097;
+        border-bottom: none;
         .logo{
             // margin: clamp(20px, 1.8vw, 20px) clamp(4vw,4vw,26px);
             width: 37px;
