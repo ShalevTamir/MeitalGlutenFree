@@ -1,4 +1,5 @@
 import { Component} from '@angular/core';
+import { internationalPhoneNumber, localPhoneNumber } from '@root/common/models/contact-data';
 
 @Component({
   selector: 'app-social-media',
@@ -8,6 +9,6 @@ import { Component} from '@angular/core';
   styleUrl: './social-media.component.scss'
 })
 export class SocialMediaComponent {
-  protected readonly localPhoneNumber: string = "0525696806";
-  protected readonly internationalPhoneNumber: string = "972" + this.localPhoneNumber.slice(1);    
+  protected readonly localPhoneNumber: string = localPhoneNumber;
+  protected readonly internationalPhoneNumber: string = internationalPhoneNumber;
 }

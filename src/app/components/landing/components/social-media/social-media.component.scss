@@ -38,10 +38,14 @@
 }
 
 @media (max-width: #{$snap-to-bottom-width}){
+    :host{
+        display: flex;
+        justify-content: center;
+    }
     .wrapper{
+        $width: 78%;
         max-width: 630px;
-        width: 78%;
-        margin: 0 auto;
+        width: $width;
         border-radius: 15px 15px 0 0;
         justify-content: space-evenly;
         .logo{
@@ -50,6 +54,8 @@
             margin: 14px 4vw;
         }
         flex-direction: row;
+        position: fixed;
+        bottom: 0;
     }
 }
 

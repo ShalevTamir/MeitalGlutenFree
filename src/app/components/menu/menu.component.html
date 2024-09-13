@@ -1,0 +1,3 @@
+<div id="menu-wrapper">
+    <app-food-card *ngFor="let cardData of menuItems" [cardData]="cardData" (viewItemEvent)="handleViewItem($event)"></app-food-card>
+</div>
