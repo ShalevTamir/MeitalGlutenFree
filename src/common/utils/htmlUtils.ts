@@ -1,6 +1,6 @@
 const dynamicNewLineHtml = ' <br class="dynamic-new-line">';
 
-export function injectDynamicNewLines(htmlElement: HTMLElement, wordsInLine: number = 1): void{   
+export function insertDynamicNewLines(htmlElement: HTMLElement, wordsInLine: number = 1): void{   
     let newElementText: string;     
     if (wordsInLine === 1){
         newElementText = htmlElement.innerHTML
@@ -20,6 +20,10 @@ export function injectDynamicNewLines(htmlElement: HTMLElement, wordsInLine: num
     }
     htmlElement.innerHTML = newElementText;
   
+}
+
+export function insertNewLinesAtChar(htmlElement: HTMLElement, seperatingChar: string){
+    htmlElement.innerHTML = htmlElement.innerHTML.split(seperatingChar).join(seperatingChar + '<br/>');
 }
 
 export function stopEventPropagation(event: Event){
