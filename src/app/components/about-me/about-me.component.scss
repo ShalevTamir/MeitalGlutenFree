@@ -4,8 +4,9 @@
     $name-font-size: 56px;
     $proffesion-font-size: calc($name-font-size - 20px);
     $description-font-size: calc($proffesion-font-size - 15px);
+    $background-box-height: 150px;
     width: 100%;
-    background: #C77C3F;
+    background: #C88D58;
     overflow: hidden;
     position: relative;
     display: flex;
@@ -14,14 +15,12 @@
     padding-bottom: 20px;
 
     #background-box{
+        box-sizing: border-box;
         position: absolute;
-        width: 104%;
-        height: 244px;
-        background: #E58F49;
-        border-bottom: 1px solid white;
-        transform: rotateZ(2.2deg);
-        right: -3%;
-        top: -37px;
+        width: 100%;
+        height: $background-box-height;
+        background: #dea673;
+        border-bottom: 2px solid white;
         z-index: 0;
     }
 
@@ -30,7 +29,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 104px;
 
         span{
             font-family: "Rubik", sans-serif;
@@ -40,13 +38,17 @@
         }
 
         #name{
+            margin-top: 10px;
             font-size: $name-font-size;
         }
         #proffesion{
             font-size: $proffesion-font-size;
         }
         #portrait{
-            width: 200px;
+            $width: 200px;
+            width: $width;
+            margin-top: calc($background-box-height - $width / 2);
+            box-sizing: border-box;
             background-position: 42% 4%;
             background-size: 230%;
             aspect-ratio: 1/1;
@@ -56,8 +58,8 @@
         }
     }
     #description{
-        margin-top: 25px;
-        right: 2vw;
+        margin-top: 20px;
+        right: 3vw;
         line-height: 28px;
         position: relative;
         width: min(77vw, 957px);
