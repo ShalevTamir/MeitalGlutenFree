@@ -15,9 +15,11 @@
     border-radius: 15px 0 0 15px;
     background-color: #bf773c;
 
-    .logo, .logo .filled{
+    .logo, g path.filled{
         fill: white;
+        -webkit-text-fill-color: white;
     }
+    
     .logo{
         margin: 5vh clamp(20px,1.8vw,25px);
         width: clamp(33px, 2vw ,40px);
