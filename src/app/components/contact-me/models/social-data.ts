@@ -1,7 +1,9 @@
-export class SocialData{
-    constructor(private imgSvg: string, private description: string, private value: string){}
+import { SafeHtml } from "@angular/platform-browser";
 
-    public get ImgSvg(): string{
+export class SocialData{
+    constructor(private imgSvg: SafeHtml, private description: string, private value: string){}
+
+    public get ImgSvg(): SafeHtml{
         return this.imgSvg;
     } 
 

@@ -1,0 +1,13 @@
+.contact-item-wrapper{
+    display: flex;
+    flex-direction: column;
+
+    .logo, g path.filled{
+        fill: white;
+        -webkit-text-fill-color: white;
+    }
+
+    .logo{
+        width: 32px;
+    }
+}

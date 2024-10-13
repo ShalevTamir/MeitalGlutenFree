@@ -7,11 +7,12 @@ import { MenuComponent } from "./components/menu/menu.component";
 import { MenuItemDetailComponent } from './components/menu/components/menu-item-detail/menu-item-details.component';
 import { ItemDetailsHandlerService } from '@root/common/services/item-details-handler.service';
 import { AboutMeComponent } from "./components/about-me/about-me.component";
+import { ContactMeComponent } from "./components/contact-me/contact-me.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, LandingComponent, NavbarComponent, MenuComponent, MenuItemDetailComponent, AboutMeComponent],
+  imports: [CommonModule, RouterOutlet, LandingComponent, NavbarComponent, MenuComponent, MenuItemDetailComponent, AboutMeComponent, ContactMeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { callLink, facebookLink, instagramLink, whatsappLink } from '@root/common/models/socials-links';
+import { SocialData } from '../../models/social-data';
 
 @Component({
   selector: 'app-contact-item',
@@ -9,8 +10,5 @@ import { callLink, facebookLink, instagramLink, whatsappLink } from '@root/commo
   styleUrl: './contact-item.component.scss'
 })
 export class ContactItemComponent {
-  protected readonly whatsappLink = whatsappLink;
-  protected readonly instagramLink = instagramLink;
-  protected readonly facebookLink = facebookLink;
-  protected readonly callLink = callLink;
+  @Input({required: true}) socialData!: SocialData;
 }
