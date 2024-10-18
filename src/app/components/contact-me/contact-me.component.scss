@@ -1,0 +1,41 @@
+#contact-me-wrapper{
+    background-color: #DEA673;
+    display: grid;
+    grid-template-rows: auto 1fr;    
+    padding: 20px 50px;
+
+    #header-wrapper{
+        display: flex;
+        justify-self: right;
+        align-items: center;
+        gap: 20px;
+
+        #title{
+            font-family: "Rubik", sans-serif;
+            font-weight: 600;
+            text-shadow: 1px 1px 0 black;
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        img#icon{
+            width: 50px;
+        }
+    }
+
+    #socials-wrapper{
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-evenly;
+        background-color: #FBEEE0;
+        border-radius: 25px;
+        border: #422800 solid 2px;
+        box-shadow: 0 7px 0 #422800;        
+
+        .separating-line{
+            height: 100%;
+            width: 1px;
+            background-color: rgba(66, 40, 0, 0.2);
+        }
+    }
+}
