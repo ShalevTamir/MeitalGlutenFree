@@ -11,4 +11,5 @@ import { SocialData } from '../../models/social-data';
 })
 export class ContactItemComponent {
   @Input({required: true}) socialData!: SocialData;
+  @Input() noBackground = false;
 }

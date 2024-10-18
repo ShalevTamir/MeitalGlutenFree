@@ -1,0 +1,96 @@
+#contact-me-wrapper{
+    background-color: #DEA673;
+    display: grid;
+    grid-template-rows: auto 1fr;    
+    padding: 20px 50px;
+
+    #header-wrapper{
+        display: flex;
+        justify-self: right;
+        align-items: center;
+        gap: 20px;
+        margin-right: 2%;
+
+        #title{
+            font-family: "Rubik", sans-serif;
+            font-weight: 600;
+            text-shadow: 1px 1px 0 black;
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        img#icon{
+            width: 50px;
+        }
+    }
+
+    
+    #socials-wrapper{
+        $border-color: #422800;
+        $background-color: #FBEEE0; 
+
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-evenly;
+        background-color: $background-color;
+        border-radius: 25px;
+        border: $border-color solid 2px;
+        box-shadow: 0 7px 0 $border-color;        
+        position: relative;
+        
+        #triangle-wrapper{
+            $aspect-ratio: calc(2 / 1);
+            $width: 54px;
+            $height: calc($width * (1 / ($aspect-ratio))); 
+            $border-size: 11%;
+            $top-offset: 2px;
+
+            width: $width;
+            height: $height;
+            position: absolute;
+            top: calc(-1 * $height + $top-offset); 
+            right: 8%;
+
+            &::before{
+                $height: $top-offset;
+                $width: 100%;
+
+                content: '';
+                top: calc(100% - $height); left: calc((100% - $width) / 2);
+                width: $width; height: $height;
+                position: absolute;
+                background: $background-color;
+                z-index: 1;
+            }
+
+            #triangle {
+                width: 100%; 
+                height: 100%;
+                background: $border-color;
+                clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+    
+                &::before{
+                    $side-margin: calc($border-size / 2.5);
+
+                    content: '';
+                    top: 0; left: 0;
+                    position: absolute;
+                    width: 100%; height: 100%;
+                    background: $background-color;
+                
+                    clip-path: polygon(
+                        calc($border-size - $side-margin) 100%,
+                        50% $border-size,
+                        calc(100% - $border-size + $side-margin) 100%);
+                }
+            }
+        }
+
+        
+        .separating-line{
+            height: 100%;
+            width: 1px;
+            background-color: rgba(66, 40, 0, 0.2);
+        }
+    }
+}
