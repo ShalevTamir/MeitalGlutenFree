@@ -1,5 +1,7 @@
-<div class="contact-item-wrapper">
-    <div [innerHTML]="socialData.ImgSvg" class="logo" [class.no-background]="noBackground"></div>
-    <span class="description">{{socialData.Description}}</span>
-    <span class="value">{{socialData.Value}}</span>
-</div>
+<a href="{{socialData.Link}}">
+    <div class="contact-item-wrapper">
+        <div [innerHTML]="socialData.ImgSvg" class="logo" [class.no-background]="noBackground"></div>
+        <span class="description">{{socialData.Description}}</span>
+        <span class="value">{{socialData.Value}}</span>
+    </div>
+</a>

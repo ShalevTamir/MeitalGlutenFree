@@ -1,63 +1,66 @@
 @import '../../contact-me.component.scss';
-
-.contact-item-wrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 10px;
-    padding: 27px 0;
-
-    $logo-size: 60px;
-    $logo-padding: 8px;
-
-    .logo, g path.filled{
-        fill: $background-color;
-        -webkit-text-fill-color: $background-color;
-    }
-
-    .logo{
-        width: $logo-size; height: $logo-size;
-        position: relative;
-        background-color: $primary-color;
-        border-radius: 50%;
-        padding: $logo-padding;
-        box-sizing: border-box;
-
-        ::ng-deep svg{
-            position: relative;
+a{
+    text-decoration: none;
+    
+    .contact-item-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 10px;
+        padding: 27px 0;
+    
+        $logo-size: 60px;
+        $logo-padding: 8px;
+    
+        .logo, g path.filled{
+            fill: $background-color;
+            -webkit-text-fill-color: $background-color;
         }
-        
-    }
-
-    .no-background{
-        background: none;
-        fill: $primary-color;
-        -webkit-text-fill-color: $primary-color;
-        padding: 0;
-    }
-
-    .description, .value{
-        font-family: "Rubik", sans-serif;        
-    }
-
-    .description{
-        color: rgba($primary-color, 0.61);
-        font-weight: 500;
-        font-size: 1.3rem;
-    }
-
-    .value{
-        color: $primary-color;
-        font-weight: 500;
-        font-size: 1.3rem;
+    
+        .logo{
+            width: $logo-size; height: $logo-size;
+            position: relative;
+            background-color: $primary-color;
+            border-radius: 50%;
+            padding: $logo-padding;
+            box-sizing: border-box;
+    
+            ::ng-deep svg{
+                position: relative;
+            }
+            
+        }
+    
+        .no-background{
+            background: none;
+            fill: $primary-color;
+            -webkit-text-fill-color: $primary-color;
+            padding: 0;
+        }
+    
+        .description, .value{
+            font-family: "Rubik", sans-serif;        
+        }
+    
+        .description{
+            color: rgba($primary-color, 0.61);
+            font-weight: 500;
+            font-size: 1.3rem;
+        }
+    
+        .value{
+            color: $primary-color;
+            font-weight: 500;
+            font-size: 1.3rem;
+        }
     }
 }
 
 @media (max-width: $phone-breakpoint-size){
-    .contact-item-wrapper{
+    a .contact-item-wrapper{
         flex-direction: row-reverse;
         justify-content: flex-start;
-        padding: 15px 17px 15px 0;
+        padding: 10px 17px 10px 0;
         gap: 20px;
 
         .value{
@@ -65,11 +68,11 @@
         }
         .description{
             color: $primary-color;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
         }
 
         .logo{
-            $size: 48px;
+            $size: 45px;
             width: $size; height: $size;
         }
     }
