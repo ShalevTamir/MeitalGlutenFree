@@ -1,4 +1,4 @@
-<div class="wrapper">  
+<div class="wrapper" #wrapper>  
   <a *ngFor="let socialData of socials" href="{{socialData.Link}}" target="_blank">
     <div class="logo {{getSocialTypeName(socialData.Type)}}">
       <div [innerHTML]="socialData.ImgSvg"></div>
