@@ -8,9 +8,9 @@
             <div id="triangle"></div>
         </div>
         <ng-container *ngFor="let socialData of socials.slice(0, socials.length - 1)">
-            <app-contact-item [socialData]="socialData" [noBackground]="IsFacebookSocialData(socialData)"></app-contact-item>
-            <div class="separating-line"></div>
+            <app-contact-item [socialData]="socialData" [noBackground]="IsFacebookSocialData(socialData)" class="socials-item"></app-contact-item>
+            <div class="vertical-separating-line"></div>
         </ng-container>
-        <app-contact-item [socialData]="socials[socials.length-1]" [noBackground]="IsFacebookSocialData(socials[socials.length - 1])"></app-contact-item>
+        <app-contact-item [socialData]="socials[socials.length-1]" [noBackground]="IsFacebookSocialData(socials[socials.length - 1])" class="socials-item"></app-contact-item>
     </div>
 </div>
