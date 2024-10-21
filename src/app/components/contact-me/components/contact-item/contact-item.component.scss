@@ -60,7 +60,7 @@ a{
     a .contact-item-wrapper{
         flex-direction: row-reverse;
         justify-content: flex-start;
-        padding: 10px 17px 10px 0;
+        padding: 5px 17px 5px 0;
         gap: 20px;
 
         .value{
@@ -68,7 +68,7 @@ a{
         }
         .description{
             color: $primary-color;
-            font-size: 1.4rem;
+            font-size: 1.55rem;
         }
 
         .logo{

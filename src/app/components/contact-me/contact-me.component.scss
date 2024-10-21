@@ -3,7 +3,7 @@ $separating-line-color: rgba(66, 40, 0, 0.2);
 $primary-color: #422800;
 $background-color: #FBEEE0;
 
-$phone-breakpoint-size: 690px;
+$phone-breakpoint-size: 500px;
 
 @mixin vertical-separating-line($height-addition: 0px){
     height: calc(100% + $height-addition);
@@ -17,26 +17,53 @@ $phone-breakpoint-size: 690px;
     background-color: $separating-line-color;
 }
 
-@mixin triangle-style($border-size){
-    width: 100%; 
-    height: 100%;
-    background: $primary-color;
-    clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
 
-    &::before{
-        $side-margin: calc($border-size / 2.5);
-
-        content: '';
-        top: 0; left: 0;
-        position: absolute;
-        width: 100%; height: 100%;
-        background: $background-color;
+@mixin triangle-style($aspect-ratio, $border-size){
+    $width: 54px;
+    $height: calc($width * (1 / ($aspect-ratio))); 
+    $top-offset: 2px;
     
-        clip-path: polygon(
-            calc($border-size - $side-margin) 100%,
-            50% $border-size,
-            calc(100% - $border-size + $side-margin) 100%);
+    width: $width;
+    height: $height;
+    position: absolute;
+    top: calc(-1 * $height + $top-offset); 
+    right: 8%;
+    
+    &::before{
+        $height: $top-offset;
+        $width: 100%;
+        
+        content: '';
+        top: calc(100% - $height); left: calc((100% - $width) / 2);
+        width: $width; height: $height;
+        position: absolute;
+        background: $background-color;
+        z-index: 1;
     }
+
+    & > *{
+        width: 100%; 
+        height: 100%;
+        background: $primary-color;
+        clip-path: polygon(0% 100%, 50% 0%, 100% 100%);
+    
+        &::before{
+            $side-margin: calc($border-size / 2.5);
+    
+            content: '';
+            top: 0; left: 0;
+            position: absolute;
+            width: 100%; height: 100%;
+            background: $background-color;
+        
+            clip-path: polygon(
+                calc($border-size - $side-margin) 100%,
+                50% $border-size,
+                calc(100% - $border-size + $side-margin) 100%);
+        }
+    }
+            
+
 }
 
 
@@ -127,32 +154,7 @@ $wrapper-padding-top-bottom: 20px;
         }
 
         #triangle-wrapper{
-            $aspect-ratio: calc(2 / 1);
-            $width: 54px;
-            $height: calc($width * (1 / ($aspect-ratio))); 
-            $top-offset: 2px;
-            
-            width: $width;
-            height: $height;
-            position: absolute;
-            top: calc(-1 * $height + $top-offset); 
-            right: 8%;
-            
-            &::before{
-                $height: $top-offset;
-                $width: 100%;
-                
-                content: '';
-                top: calc(100% - $height); left: calc((100% - $width) / 2);
-                width: $width; height: $height;
-                position: absolute;
-                background: $background-color;
-                z-index: 1;
-            }
-            
-            #triangle {                
-                @include triangle-style(11%);
-            }
+            @include triangle-style(calc(2 / 1), 11%);
         }                
     }
 }
@@ -166,16 +168,6 @@ $wrapper-padding-top-bottom: 20px;
             @include socials-item-style(2);
         }
 
-        // // Vertical line
-        // &::before {
-        //     content: '';
-        //     top: 0;
-        //     left: calc((100% - $separating-line-size) / 2);
-        //     position: absolute;
-
-        //     @include vertical-separating-line();
-        // }
-
         .vertical-separating-line {
             display: none;
         }
@@ -185,6 +177,7 @@ $wrapper-padding-top-bottom: 20px;
 @media (max-width: #{$phone-breakpoint-size}) {
     #contact-me-wrapper{
         padding: $wrapper-padding-top-bottom 0 calc($wrapper-padding-top-bottom + 40px) 0;
+        box-shadow: 0 4px 0 $primary-color;
 
         #socials-wrapper{
             border-top: none;
@@ -196,8 +189,10 @@ $wrapper-padding-top-bottom: 20px;
                 @include socials-item-style(1);
             }
 
-            #triangle-wrapper #triangle{
-                @include triangle-style(0%);
+            #triangle-wrapper {
+                @include triangle-style(calc(2.5 / 1), 0%);
+                
+                right: 12%;
             }
         }
     }
