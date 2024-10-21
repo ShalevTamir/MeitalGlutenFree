@@ -1,11 +1,13 @@
 @use '../../../landing/landing.component.scss' as *;
 
+$wrapper-margin: 30px;
+
 .food-card-wrapper{
     aspect-ratio: 88 / 129;
     width: 340px;
     display: flex;
     flex-direction: column;
-    margin: 0 30px;
+    margin: 0 $wrapper-margin;
     
     .seperating-line{
         width: 100%;
@@ -92,7 +94,7 @@
 
 @media (max-width: #{$snap-to-bottom-width}){
     .food-card-wrapper{
-        width: 310px;
+        width: min(calc(100vw - 2 * $wrapper-margin), 310px);
 
         .background-wrapper .main-wrapper{
             .price{
@@ -100,6 +102,25 @@
             }
             .description{
                 font-size: 149%;
+            }
+        }
+    }
+}
+
+@media (max-width: 400px){
+    .food-card-wrapper .background-wrapper{
+        .main-wrapper{
+            .price{
+                font-size: 6vw;
+            }
+            .description{
+                font-size: 5.8vw;
+            }
+        }
+        .secondary-wrapper{
+            .button-74{
+                font-size: 6vw;
+                padding: 1px 9vw;
             }
         }
     }

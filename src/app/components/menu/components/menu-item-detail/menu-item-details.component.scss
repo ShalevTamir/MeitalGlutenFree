@@ -176,7 +176,7 @@
     }   
 }
 
-@media(max-width: 650px){
+@media (max-width: 650px){
     :host .background-overlay .detail-wrapper{
         width: 100%;
 
@@ -198,5 +198,11 @@
                 }
             }
         }
+    }
+}
+
+@media (max-width: 400px){
+    :host .background-overlay .detail-wrapper img{
+        height: 40vh;
     }
 }
