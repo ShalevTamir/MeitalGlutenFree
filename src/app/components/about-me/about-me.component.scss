@@ -80,3 +80,19 @@
         padding-bottom: 80px;
     }
 }
+
+@media (max-width: 320px){
+    #about-me-wrapper #profile-wrapper{
+        $name-font-size: 17.5vw;
+        $proffesion-font-size: calc($name-font-size - 20px);
+        #name{
+            font-size: max(45.15px, $name-font-size);
+        }
+        #proffesion{
+            font-size: max(26.5px, $proffesion-font-size);
+        }
+        #description{
+            font-size: max(17.15px, calc($proffesion-font-size - 5px));
+        }
+    }
+}
