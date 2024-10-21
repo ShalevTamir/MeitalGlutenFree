@@ -6,7 +6,28 @@
 //     }
 // }
 
-@import '../../landing.component.scss';
+@import '../landing/landing.component.scss';
+
+:host{
+    z-index: 2;
+    height: 100%;
+    display: grid;
+    align-items: center;
+    right: 0;   
+    position:absolute;
+    top: 0;
+
+    @media (max-width: #{$snap-to-bottom-width}){
+        &{
+            width: 100%;
+            height: auto;
+            position: absolute;
+            bottom: 0;
+            top: auto;
+            position: fixed;
+        }
+    }
+}
 
 .wrapper{
     display: flex;

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild, ViewContainerRef} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild, ViewContainerRef} from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { SocialDataManager } from '@root/common/services/social-data-manager.service';
 import { internationalPhoneNumber, localPhoneNumber } from '@root/common/models/contact-data';
@@ -10,8 +10,9 @@ import { NgFor } from '@angular/common';
 import { getParsedName, SocialType } from '@root/app/components/contact-me/models/enums/social-type.enum';
 import { BottomScrollDetector } from '@root/common/services/bottom-scroll-detector.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { IntersectionDetector } from '@root/common/services/intersection-detector.service';
 
-const animationDuration = '0.4s';
+const animationDuration = '0.2s';
 const openStateStyle = style({
   bottom: '0'
 });
@@ -35,30 +36,29 @@ const animationConfig = animationDuration + ' ease-in-out';
   ]
 })
 export class SocialMediaComponent implements AfterViewInit {
-  @ViewChild('wrapper') private _wrapper!: ElementRef<HTMLElement>;
-
-  private _defaultDisplayValue: string = 'flex';
+  @Input() public hideOnContactElement!: HTMLElement;
+  
   protected socials: SocialData[];
   protected getSocialTypeName: (socialType: SocialType) => string = getParsedName;
   protected isOpen = true;
 
-  constructor(socialDataManager: SocialDataManager, bottomScrollDetector: BottomScrollDetector){
-    bottomScrollDetector.ReachedBottomEvent.subscribe(this.hideComponent.bind(this));
-    bottomScrollDetector.ScrolledAboveBottomEvent.subscribe(this.showComponent.bind(this));
+  constructor(socialDataManager: SocialDataManager, private _intersectionDetector: IntersectionDetector){
     this.socials = socialDataManager.GetAllSocials();
   }
 
   ngAfterViewInit(): void {
-    this._defaultDisplayValue = this._wrapper.nativeElement.style.display || this._defaultDisplayValue;
+    this._intersectionDetector.detectIntersection(
+      this.hideOnContactElement,
+      this.hideComponent.bind(this),
+      this.showComponent.bind(this),
+      {threshold: 0.8});
   }
 
   private hideComponent(){
-    console.log("hiding");
     this.isOpen = false;
   }
 
   private showComponent(){
-    console.log("show");
     this.isOpen = true;
   }
 
