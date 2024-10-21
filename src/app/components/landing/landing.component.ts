@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { NavbarComponent } from "./components/navbar/navbar.component";
-import { SocialMediaComponent } from "./components/social-media/social-media.component";
+import { SocialMediaComponent } from "../social-media/social-media.component";
 import { BubbleComponent } from "./components/bubble/bubble.component";
 import { insertDynamicNewLines } from '@root/common/utils/htmlUtils';
 

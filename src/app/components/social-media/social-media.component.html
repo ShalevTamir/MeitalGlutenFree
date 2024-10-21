@@ -1,0 +1,7 @@
+<div class="wrapper" #wrapper [@openClose]="isOpen ? 'open' : 'closed'">  
+  <a *ngFor="let socialData of socials" href="{{socialData.Link}}" target="_blank">
+    <div class="logo {{getSocialTypeName(socialData.Type)}}">
+      <div [innerHTML]="socialData.ImgSvg"></div>
+    </div>
+  </a>
+</div>

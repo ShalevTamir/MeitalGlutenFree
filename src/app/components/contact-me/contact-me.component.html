@@ -1,0 +1,16 @@
+<div id="contact-me-wrapper" #wrapper>
+    <div id="header-wrapper">
+        <span id="title">צרו קשר</span>
+        <img src="assets/images/phone-logo-shadow.png" alt="phone-logo" id="icon">
+    </div>
+    <div id="socials-wrapper">
+        <div id="triangle-wrapper">
+            <div id="triangle"></div>
+        </div>
+        <ng-container *ngFor="let socialData of socials.slice(0, socials.length - 1)">
+            <app-contact-item [socialData]="socialData" [noBackground]="IsFacebookSocialData(socialData)" class="socials-item"></app-contact-item>
+            <div class="vertical-separating-line"></div>
+        </ng-container>
+        <app-contact-item [socialData]="socials[socials.length-1]" [noBackground]="IsFacebookSocialData(socials[socials.length - 1])" class="socials-item"></app-contact-item>
+    </div>
+</div>

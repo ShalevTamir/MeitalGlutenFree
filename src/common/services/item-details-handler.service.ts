@@ -13,7 +13,6 @@ export class ItemDetailsHandlerService {
   }
 
   setViewContainerRef(containerRef: ViewContainerRef){
-    console.log(containerRef);
     this._viewContainerRef = containerRef;
   }
 

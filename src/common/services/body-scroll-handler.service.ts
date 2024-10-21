@@ -17,7 +17,7 @@ export class BodyScrollHandler{
         this._bodyElement.style.overflow = this._defaultOverflowValue;    
       }
       
-      disableScroll(){
-        this._bodyElement.style.overflow = 'hidden';
-      }
+    disableScroll(){
+      this._bodyElement.style.overflow = 'hidden';
+    }
 }

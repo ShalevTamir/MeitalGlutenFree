@@ -16,27 +16,7 @@ section#landing-page{
 
     & > *{
         z-index: 1;
-    }
-
-    div.social-media-wrapper{
-        height: 100%;
-        display: grid;
-        align-items: center;
-        right: 0;   
-        position:absolute;
-        top: 0;
-
-        @media (max-width: #{$snap-to-bottom-width}){
-            &{
-                width: 100%;
-                height: auto;
-                position: absolute;
-                bottom: 0;
-                top: auto;
-                position: fixed;
-            }
-        }
-    }
+    }    
 
     $background-min-width: 1270px;
 
@@ -95,6 +75,7 @@ section#landing-page{
 
         
         .button-74 {
+            z-index: 3;
             background-color: #fbeee0;
             border: 2px solid #422800;
             border-radius: 30px;
