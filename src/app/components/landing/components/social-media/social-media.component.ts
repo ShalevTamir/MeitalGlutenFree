@@ -53,14 +53,12 @@ export class SocialMediaComponent implements AfterViewInit {
   }
 
   private hideComponent(){
-    // this._wrapper.nativeElement.style.display = 'none';
-    console.log('closing');
+    console.log("hiding");
     this.isOpen = false;
   }
 
   private showComponent(){
-    // this._wrapper.nativeElement.style.display = this._defaultDisplayValue;
-    console.log('opening');
+    console.log("show");
     this.isOpen = true;
   }
 
