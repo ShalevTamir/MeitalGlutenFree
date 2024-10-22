@@ -6,6 +6,10 @@ import { parseStringDelayToMillis } from './services/timeUtils';
 import { ViewState } from './enums/view-state.enums';
 import { stopEventPropagation } from '@root/common/utils/htmlUtils';
 import { BodyScrollHandler } from '@root/common/services/body-scroll-handler.service';
+import { SocialDataManager } from '@root/common/services/social-data-manager.service';
+import { SocialData } from '@root/app/components/contact-me/models/social-data';
+import { SocialType } from '@root/app/components/contact-me/models/enums/social-type.enum';
+import { NgClass } from '@angular/common';
 
 const animationDuration = '0.4s';
 const openStateStyle = style({
@@ -21,7 +25,7 @@ const animationConfig = animationDuration + ' ease-in-out';
 @Component({
   selector: 'app-menu-item-details',
   standalone: true,
-  imports: [],
+  imports: [NgClass],
   templateUrl: './menu-item-details.component.html',
   styleUrl: './menu-item-details.component.scss',
   animations: [
@@ -34,15 +38,18 @@ const animationConfig = animationDuration + ' ease-in-out';
   ]
 })
 export class MenuItemDetailComponent{
-  protected cardData!: CardData
-  protected readonly localPhoneNumber: string = readableLocalPhoneNUmber;
   private readonly _hiddenClassName = 'hidden';
   private readonly _nativeElement: HTMLElement;
   protected state = ViewState.CLOSE;
+  protected cardData!: CardData
   protected stopPropagationFuncRef = stopEventPropagation
+  protected phoneSocialData: SocialData;
+  protected whatsappSocialData: SocialData;
 
-  constructor(private _bodyScrollHandler: BodyScrollHandler, elementRef: ElementRef){
+  constructor(private _bodyScrollHandler: BodyScrollHandler, private _socialDataManager: SocialDataManager ,elementRef: ElementRef){
     this._nativeElement = elementRef.nativeElement;      
+    this.phoneSocialData = _socialDataManager.GetSocialData(SocialType.PHONE);
+    this.whatsappSocialData = _socialDataManager.GetSocialData(SocialType.WHATSAPP);
   }
 
   setCardData(cardData: CardData){

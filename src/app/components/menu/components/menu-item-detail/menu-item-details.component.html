@@ -15,8 +15,10 @@
     
         <div class="call-info">
             <span class="click-phone-number-text">להזמנה לחצו</span>
-            <a class="phone-number" href="{{phoneSocialData.Link}}">{{phoneSocialData.Value}}</a>
-            <a class="whatsapp-logo" href="{{whatsappSocialData.Link}}"><div [innerHTML]="whatsappSocialData.ImgSvg"></div></a>
+            <div class="socials">
+                <a class="phone-number" href="{{phoneSocialData.Link}}">{{phoneSocialData.Value}}</a>
+                <a class="whatsapp-logo" href="{{whatsappSocialData.Link}}"><div [ngClass]="'logo'" [innerHTML]="whatsappSocialData.ImgSvg"></div></a>
+            </div>
         </div>
     </div>
 </div>
