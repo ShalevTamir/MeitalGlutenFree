@@ -14,19 +14,20 @@ section#landing-page{
     align-items: center;
     justify-content: center;
     background-repeat: no-repeat;
-
+    min-height: 566px;
+    
     & > *{
         z-index: 1;
     }    
-
+    
     img.line{
         position: absolute;
         z-index: 0;
-
+        
         &.left{
             justify-self: left;
         }
-
+        
         &.middle{
             top: -12%;
         }
@@ -41,18 +42,18 @@ section#landing-page{
             top: 0;
             right: 0;
         }
-
+        
         &.bottom-left{
             bottom: 0;
             left: 0;
         }
     }
-
+    
     #details {
+        margin-top: 10vh;
         position: relative;
         width: 75vw;
         min-width: $background-min-width;
-        margin-top: 10vh;
         display: grid;        
         align-items: center;
         justify-items: center;
@@ -224,6 +225,7 @@ section#landing-page{
 @media (max-width: #{$convert-to-mobile-width}){
     section#landing-page{
         #details{
+            margin-top: 5vh;
             img.line.middle{
                 top: -5%;
             }
@@ -237,7 +239,6 @@ section#landing-page{
                 }
             }
 
-            margin-top: 5vh;
             .subtitle{
                 margin-top: 1vh;
                 ::ng-deep .dynamic-new-line{

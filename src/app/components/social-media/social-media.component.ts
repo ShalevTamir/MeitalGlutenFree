@@ -11,13 +11,17 @@ import { getParsedName, SocialType } from '@root/app/components/contact-me/model
 import { BottomScrollDetector } from '@root/common/services/bottom-scroll-detector.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { IntersectionDetector } from '@root/common/services/intersection-detector.service';
+import { SocialMediaBoundriesManager } from '@root/common/services/social-media-intersection-manager.service';
+import { secondsToMillis } from '@root/common/utils/timeUtils';
 
 const animationDuration = '0.2s';
 const openStateStyle = style({
-  bottom: '0'
+  transform: 'translateY(0px)'
+  // bottom: '0'
 });
 const closedStateStyle = style({
-  bottom: '-70px'
+  transform: 'translateY(70px)'
+  // bottom: '-70px'
 });
 const animationConfig = animationDuration + ' ease-in-out';
 
@@ -36,22 +40,35 @@ const animationConfig = animationDuration + ' ease-in-out';
   ]
 })
 export class SocialMediaComponent implements AfterViewInit {
-  @Input() public hideOnContactElement!: HTMLElement;
   
+  @ViewChild("animationWrapper") private _animationWrapper!: ElementRef<HTMLElement>;
+  @ViewChild("wrapper") private _wrapper!: ElementRef<HTMLElement>;
+
+  // protected readonly minimumScreenSize: string = "700px";
   protected socials: SocialData[];
   protected getSocialTypeName: (socialType: SocialType) => string = getParsedName;
   protected isOpen = true;
 
-  constructor(socialDataManager: SocialDataManager, private _intersectionDetector: IntersectionDetector){
+  constructor(socialDataManager: SocialDataManager, private _boundriesManager: SocialMediaBoundriesManager){
     this.socials = socialDataManager.GetAllSocials();
   }
 
   ngAfterViewInit(): void {
-    this._intersectionDetector.detectIntersection(
-      this.hideOnContactElement,
+    this._boundriesManager.setBottomBoundaryHandlers(
       this.hideComponent.bind(this),
+      this.showComponent.bind(this)
+    )
+
+    const elementHeight = this._wrapper.nativeElement.getBoundingClientRect().height;
+    const numericalAnimationDuration = secondsToMillis(Number(animationDuration.slice(0, -1)));
+
+    this._boundriesManager.setTopBoundaryHandlers(
+      this._animationWrapper.nativeElement,
+      this.hideComponent.bind(this),  
       this.showComponent.bind(this),
-      {threshold: 0.8});
+      numericalAnimationDuration,
+      elementHeight
+    )
   }
 
   private hideComponent(){

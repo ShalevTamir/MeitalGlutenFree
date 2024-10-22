@@ -8,7 +8,7 @@
 
 @import '../landing/landing.component.scss';
 
-:host{
+.animation-wrapper{
     z-index: 2;
     height: 100%;
     display: grid;
@@ -17,16 +17,7 @@
     position:absolute;
     top: 0;
 
-    @media (max-width: #{$snap-to-bottom-width}){
-        &{
-            width: 100%;
-            height: auto;
-            position: absolute;
-            bottom: 0;
-            top: auto;
-            position: fixed;
-        }
-    }
+    
 }
 
 .wrapper{
@@ -60,10 +51,18 @@
     }
 }
 
+
 @media (max-width: #{$snap-to-bottom-width}){
-    :host{
+    .animation-wrapper{
         display: flex;
         justify-content: center;
+
+        width: 100%;
+        height: auto;
+        position: absolute;
+        bottom: 0;
+        top: auto;
+        position: fixed;
     }
     .wrapper{
         $width: 78%;
