@@ -10,9 +10,10 @@ import { NgFor } from '@angular/common';
 import { getParsedName, SocialType } from '@root/app/components/contact-me/models/enums/social-type.enum';
 import { BottomScrollDetector } from '@root/common/services/bottom-scroll-detector.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { IntersectionDetector } from '@root/common/services/intersection-detector.service';
-import { SocialMediaBoundriesManager } from '@root/common/services/social-media-intersection-manager.service';
+import { IntersectionManager } from '@root/common/services/intersection-manager.service';
+import { SocialMediaBoundariesManager } from '@root/app/components/social-media/services/social-media-boundaries-manager.service';
 import { secondsToMillis } from '@root/common/utils/timeUtils';
+import { RelativePosition } from '@root/common/models/enums/relative-target-position.enum';
 
 const animationDuration = '0.2s';
 const openStateStyle = style({
@@ -49,34 +50,16 @@ export class SocialMediaComponent implements AfterViewInit {
   protected getSocialTypeName: (socialType: SocialType) => string = getParsedName;
   protected isOpen = true;
 
-  constructor(socialDataManager: SocialDataManager, private _boundriesManager: SocialMediaBoundriesManager){
+  constructor(socialDataManager: SocialDataManager, private _boundriesManager: SocialMediaBoundariesManager){
     this.socials = socialDataManager.GetAllSocials();
   }
 
   ngAfterViewInit(): void {
-    this._boundriesManager.setBottomBoundaryHandlers(
-      this.hideComponent.bind(this),
-      this.showComponent.bind(this)
-    )
-
-    const elementHeight = this._wrapper.nativeElement.getBoundingClientRect().height;
-    const numericalAnimationDuration = secondsToMillis(Number(animationDuration.slice(0, -1)));
-
-    this._boundriesManager.setTopBoundaryHandlers(
-      this._animationWrapper.nativeElement,
-      this.hideComponent.bind(this),  
-      this.showComponent.bind(this),
-      numericalAnimationDuration,
-      elementHeight
-    )
+    this._boundriesManager.setTargetElement(this._animationWrapper.nativeElement);
+    this._boundriesManager.RelativePositionUpdate.subscribe(this.handleRelativePositionUpdate.bind(this));
   }
 
-  private hideComponent(){
-    this.isOpen = false;
+  private handleRelativePositionUpdate(relativePosition: RelativePosition){
+    this.isOpen = relativePosition === RelativePosition.BETWEEN;
   }
-
-  private showComponent(){
-    this.isOpen = true;
-  }
-
 }
