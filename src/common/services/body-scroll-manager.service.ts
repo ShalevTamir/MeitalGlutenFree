@@ -4,7 +4,7 @@ import { DOCUMENT } from "@angular/common";
 @Injectable({
     providedIn: 'root'
 })
-export class BodyScrollHandler{
+export class BodyScrollManager{
     private readonly _bodyElement: HTMLElement;
     private readonly _defaultOverflowValue: string;
 

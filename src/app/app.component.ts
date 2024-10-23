@@ -1,8 +1,8 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, Directive, ElementRef, OnInit, Type, ViewChild, ViewContainerRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { LandingComponent } from "./components/landing/landing.component";
-import { NavbarComponent } from "./components/landing/components/navbar/navbar.component";
+import { NavbarComponent } from "./components/navbar/navbar.component";
 import { MenuComponent } from "./components/menu/menu.component";
 import { MenuItemDetailComponent } from './components/menu/components/menu-item-detail/menu-item-details.component';
 import { ItemDetailsHandlerService } from '@root/common/services/item-details-handler.service';
@@ -10,6 +10,7 @@ import { AboutMeComponent } from "./components/about-me/about-me.component";
 import { ContactMeComponent } from "./components/contact-me/contact-me.component";
 import { SocialMediaComponent } from "./components/social-media/social-media.component";
 import { SocialMediaBoundriesManager } from '@root/common/services/social-media-intersection-manager.service';
+import { ScrollHandler } from '@root/common/services/scroll-handler.service';
 
 @Component({
   selector: 'app-root',
@@ -19,12 +20,14 @@ import { SocialMediaBoundriesManager } from '@root/common/services/social-media-
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit, AfterViewInit{
-  @ViewChild(MenuComponent) menuComponent!: MenuComponent;
   @ViewChild(ContactMeComponent, { read: ElementRef, static: true }) contactMeElementRef!: ElementRef<HTMLElement>;
   @ViewChild('menuItemDetailsContainer', { read: ViewContainerRef, static: true }) menuItemDetailsContainer!: ViewContainerRef;
   title = 'MeitalGlutenFree';
 
-  constructor(private itemDetailsHandler: ItemDetailsHandlerService, private _socialMediaBoundriesManager: SocialMediaBoundriesManager){
+  constructor(
+    private itemDetailsHandler: ItemDetailsHandlerService,
+    private _socialMediaBoundriesManager: SocialMediaBoundriesManager){
+      
   }
   
   ngAfterViewInit(): void {
@@ -33,10 +36,5 @@ export class AppComponent implements OnInit, AfterViewInit{
 
   ngOnInit(){
     this.itemDetailsHandler.setViewContainerRef(this.menuItemDetailsContainer);
-  }
-
-  scrollToMenu(){
-    const menuElement: HTMLElement = this.menuComponent.ElementRef.nativeElement;
-    menuElement.scrollIntoView({ behavior: 'smooth' });
   }
 }

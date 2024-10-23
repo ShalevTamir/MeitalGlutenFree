@@ -1,9 +1,11 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
-import { NavbarComponent } from "./components/navbar/navbar.component";
+import { NavbarComponent } from "../navbar/navbar.component";
 import { SocialMediaComponent } from "../social-media/social-media.component";
 import { BubbleComponent } from "./components/bubble/bubble.component";
 import { insertDynamicNewLines } from '@root/common/utils/htmlUtils';
 import { SocialMediaBoundriesManager } from '@root/common/services/social-media-intersection-manager.service';
+import { ScrollHandler } from '@root/common/services/scroll-handler.service';
+import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'app-landing',
@@ -15,9 +17,8 @@ import { SocialMediaBoundriesManager } from '@root/common/services/social-media-
 export class LandingComponent implements AfterViewInit{
   @ViewChild('subtitle') subtitle!: ElementRef<HTMLElement>;
   @ViewChild('menuButton') menuButton!: ElementRef<HTMLElement>;
-  @Output() scrollToMenuEvent = new EventEmitter();
 
-  constructor(private _socialMediaBoundriesManager: SocialMediaBoundriesManager){}
+  constructor(private _socialMediaBoundriesManager: SocialMediaBoundriesManager, private _scrollHandler: ScrollHandler){}
 
   ngAfterViewInit(): void {
     this._socialMediaBoundriesManager.setTopBoundaryElement(this.menuButton.nativeElement);
@@ -25,7 +26,7 @@ export class LandingComponent implements AfterViewInit{
   }
 
   scrollToMenu(){
-    this.scrollToMenuEvent.emit();
+    this._scrollHandler.ScrollTo(MenuComponent);
   }
 
 }

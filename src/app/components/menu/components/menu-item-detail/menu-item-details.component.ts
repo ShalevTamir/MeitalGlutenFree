@@ -5,7 +5,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { parseStringDelayToMillis } from './services/timeUtils';
 import { ViewState } from './enums/view-state.enums';
 import { stopEventPropagation } from '@root/common/utils/htmlUtils';
-import { BodyScrollHandler } from '@root/common/services/body-scroll-handler.service';
+import { BodyScrollManager } from '@root/common/services/body-scroll-manager.service';
 import { SocialDataManager } from '@root/common/services/social-data-manager.service';
 import { SocialData } from '@root/app/components/contact-me/models/social-data';
 import { SocialType } from '@root/app/components/contact-me/models/enums/social-type.enum';
@@ -46,7 +46,7 @@ export class MenuItemDetailComponent{
   protected phoneSocialData: SocialData;
   protected whatsappSocialData: SocialData;
 
-  constructor(private _bodyScrollHandler: BodyScrollHandler, private _socialDataManager: SocialDataManager ,elementRef: ElementRef){
+  constructor(private _bodyScrollHandler: BodyScrollManager, private _socialDataManager: SocialDataManager ,elementRef: ElementRef){
     this._nativeElement = elementRef.nativeElement;      
     this.phoneSocialData = _socialDataManager.GetSocialData(SocialType.PHONE);
     this.whatsappSocialData = _socialDataManager.GetSocialData(SocialType.WHATSAPP);

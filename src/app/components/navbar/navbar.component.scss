@@ -1,5 +1,5 @@
 @import '@root/styles.scss';
-@import '../../landing.component.scss';
+@import '../landing/landing.component.scss';
 
 .wrapper{
     z-index: 2;
@@ -12,8 +12,9 @@
     box-shadow: #422800 3px 3px 0 0;
     border: 1px solid #422800;
     box-sizing: border-box;
+    cursor: pointer;
     
-    a.nav-item{
+    .nav-item{
         font-family: "Rubik", sans-serif;
         color: #422800;
         font-size: 1.2rem;
@@ -31,7 +32,7 @@
     }
 
     @media (max-width: #{$convert-to-mobile-width}){    
-        a.nav-item{
+        .nav-item{
             padding: 1.5px 0;
             ::ng-deep .dynamic-new-line{
                 display: block;
@@ -53,7 +54,7 @@
     .wrapper{
         min-width: auto;
         width: 85vw;   
-        a.nav-item{
+        .nav-item{
             padding: 3px 0;
             font-size: min(1.1rem, 5vw);
         }

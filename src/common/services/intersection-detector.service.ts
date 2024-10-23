@@ -49,9 +49,7 @@ export class IntersectionDetector{
             let emittedTime: number | undefined;
             
             let checkIntersectionCallback = () => {
-                console.log('running');
                 let newRelativePosition = this.calcRelativeTargetPosition(rootElement, targetElement, options.threshold!, options.transitionMargin!);
-                console.log(newRelativePosition);
                 if (currentRelativePosition != newRelativePosition){
                     currentRelativePosition = newRelativePosition;
                     const updateEmittionCallback = () => {
@@ -98,7 +96,6 @@ export class IntersectionDetector{
 
     private calcRelativeTargetPosition(rootElement: HTMLElement, targetElement: HTMLElement, threshold: number, transitionMargin: number): RelativeTargetPosition | undefined{
         const [rootRect, targetRect]: [DOMRect, DOMRect] = [rootElement.getBoundingClientRect(), targetElement.getBoundingClientRect()];
-        console.log(rootRect.bottom, rootRect.top, targetRect.bottom, targetRect.top);
         const thresholdPercentage = threshold * rootRect.height;
 
         if (targetRect.top - transitionMargin <= rootRect.bottom - thresholdPercentage)

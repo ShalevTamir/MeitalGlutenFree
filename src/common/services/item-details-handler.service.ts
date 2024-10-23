@@ -25,7 +25,6 @@ export class ItemDetailsHandlerService {
     if (this._itemDetailsComponent === undefined){
       this.generateComponent();
     }
-    console.log(this._itemDetailsComponent);
     this._itemDetailsComponent?.setCardData(cardData);
     this._itemDetailsComponent?.open();
   }
