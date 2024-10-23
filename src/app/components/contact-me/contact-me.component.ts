@@ -8,6 +8,8 @@ import { BottomScrollDetector } from '@root/common/services/bottom-scroll-detect
 import { IntersectionManager } from '@root/common/services/intersection-manager.service';
 import { RefHtmlElement } from '@root/common/interfaces/RefHtmlElement.interface';
 import { ScrollHandler } from '@root/common/services/scroll-handler.service';
+import { SocialMediaBoundariesManager } from '../social-media/services/social-media-boundaries-manager.service';
+import { BoundaryType } from '../social-media/models/enums/boundary-type.enums';
 
 @Component({
   selector: 'app-contact-me',
@@ -18,9 +20,10 @@ import { ScrollHandler } from '@root/common/services/scroll-handler.service';
 })
 export class ContactMeComponent implements RefHtmlElement{
   htmlRef: HTMLElement;
-  constructor(private _socialDataManager: SocialDataManager, scrollHandler: ScrollHandler, elementRef: ElementRef){
+  constructor(private _socialDataManager: SocialDataManager, scrollHandler: ScrollHandler, socialMediaBoundriesManager: SocialMediaBoundariesManager, elementRef: ElementRef){
     this.htmlRef = elementRef.nativeElement;
     scrollHandler.AddScrollItem(ContactMeComponent, this);
+    socialMediaBoundriesManager.setBoundaryElement(BoundaryType.BOTTOM, this.htmlRef);
   }
 
   protected get socials(): SocialData[]{

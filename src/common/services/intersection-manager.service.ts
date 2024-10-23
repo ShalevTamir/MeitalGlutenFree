@@ -1,35 +1,35 @@
 import { Injectable } from "@angular/core";
-import { TimeoutManager } from "./timeout-manager.service";
-
-enum RelativeTargetPosition{
-    ABOVE_OR_BETWEEN,
-    BELOW,
-}
+import { RelativePosition } from "../models/enums/relative-target-position.enum";
+import { injectDefaultValues } from "../utils/objectUtils";
 
 interface IntersectionOptions{
-    threshold?: number,
-    emitCooldown?: number,
-    transitionMargin?: number
+    //The percentage of the root element from the top, that the target element will have to touch in order to emit a RelativeTargetPosition.ABOVE or RelativeTargetPosition.BETWEEN
+    topThreshold?: number,
+    //The percentage of the root element from the bottom that the target element will have to cover in order to emit a RelativeTargetPosition.BELOW or RelativeTargetPosition.BETWEEN
+    bottomThreshold?: number
 }
 
 @Injectable({
     providedIn: 'root'
 })
 export class IntersectionManager{
-    constructor(private _timeoutManager: TimeoutManager){}
+    private readonly _defaultIntersectionOptions: IntersectionOptions;
+
+    constructor(){
+        this._defaultIntersectionOptions = {
+            topThreshold: 0,
+            bottomThreshold: 0
+        }
+    }
 
     public detectIntersection(
         targetElement: HTMLElement,
-        handleIntersectionCallback?: () => void,
-        handleExitIntersectionCallback?: () => void,
+        intersectionCallback: (isIntersecting: boolean) => void,
         intersectionOptions?: IntersectionObserverInit){
 
         const intersectionObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting)
-                    handleIntersectionCallback?.();
-                else
-                    handleExitIntersectionCallback?.();
+                intersectionCallback(entry.isIntersecting);
             });
         }, intersectionOptions);
         intersectionObserver.observe(targetElement);
@@ -38,34 +38,21 @@ export class IntersectionManager{
     public detectRelativePosition(
         rootElement: HTMLElement,
         targetElement: HTMLElement,
-        handleAboveOrInsideRoot?: () => void,
-        handleBelowRootElement?: () => void,
+        intersectionCallback: (relativePosition: RelativePosition) => void,
         intersectionOptions?: IntersectionOptions
         ){
 
-            const options: IntersectionOptions = this.buildOptions(intersectionOptions);
-            let currentRelativePosition: RelativeTargetPosition | undefined;
-            let emittedTime: number | undefined;
-            
+            const optionsWithDefaults: IntersectionOptions = injectDefaultValues(this._defaultIntersectionOptions, intersectionOptions);
+            const topThresholdInPixels = rootElement.getBoundingClientRect().height * optionsWithDefaults.topThreshold!;
+            const bottomThresholdInPixels = rootElement.getBoundingClientRect().height * optionsWithDefaults.bottomThreshold!;
+
+            let targetRelativePosition: RelativePosition | undefined;
             let checkIntersectionCallback = () => {
-                let newRelativePosition = this.calcRelativeTargetPosition(rootElement, targetElement, options.threshold!, options.transitionMargin!);
-                if (currentRelativePosition != newRelativePosition){
-                    currentRelativePosition = newRelativePosition;
-                    const updateEmittionCallback = () => {
-                        emittedTime = 
-                            this.emitRelativeTargetPosition(
-                                currentRelativePosition!,
-                                handleAboveOrInsideRoot,
-                                handleBelowRootElement);
-                    };
-                    if (newRelativePosition === RelativeTargetPosition.ABOVE_OR_BETWEEN){
-                        updateEmittionCallback();
-                    }
-                    else{
-                        this._timeoutManager.runCallbackAfterDelay(
-                            updateEmittionCallback,
-                            options.emitCooldown!, emittedTime || Date.now())
-                    }
+                let newRelativePosition = this.calcRelativeTargetPosition(rootElement, targetElement, topThresholdInPixels, bottomThresholdInPixels);
+
+                if (targetRelativePosition != newRelativePosition){
+                    targetRelativePosition = newRelativePosition;
+                    intersectionCallback(targetRelativePosition)                            
                 }
             }
 
@@ -73,45 +60,17 @@ export class IntersectionManager{
             window.addEventListener('resize', checkIntersectionCallback);
             window.addEventListener('load', checkIntersectionCallback);
     }
-
-    //Returns the time at which the callback fired
-    private emitRelativeTargetPosition(
-        relativePosition: RelativeTargetPosition,
-        handleAboveOrInsideRoot: (() => void) | undefined,
-        handleBelowRootElement: (() => void) | undefined){
-
-        switch(relativePosition){
-            case RelativeTargetPosition.ABOVE_OR_BETWEEN:
-                handleAboveOrInsideRoot?.();
-                break;
-            case RelativeTargetPosition.BELOW:
-                handleBelowRootElement?.();
-                break;
-            default:
-                return undefined;
-        }
-        return Date.now();
-    }
-
-    private calcRelativeTargetPosition(rootElement: HTMLElement, targetElement: HTMLElement, threshold: number, transitionMargin: number): RelativeTargetPosition | undefined{
+   
+    private calcRelativeTargetPosition(rootElement: HTMLElement, targetElement: HTMLElement, topThresholdInPixels: number, bottomThresholdInPixels: number): RelativePosition{
         const [rootRect, targetRect]: [DOMRect, DOMRect] = [rootElement.getBoundingClientRect(), targetElement.getBoundingClientRect()];
-        const thresholdPercentage = threshold * rootRect.height;
-
-        if (targetRect.top - transitionMargin <= rootRect.bottom - thresholdPercentage)
-            return RelativeTargetPosition.ABOVE_OR_BETWEEN;
-        if (targetRect.top - transitionMargin > rootRect.bottom - thresholdPercentage)
-            return RelativeTargetPosition.BELOW;
-
-        return undefined;
-    }
-
-    private buildOptions(options?: IntersectionOptions): IntersectionOptions{
-        const defaultOptions: IntersectionOptions = {
-            threshold: 0,
-            emitCooldown: 0,
-            transitionMargin: 0
-        } 
-
-        return { ...defaultOptions, ...options };
+        const topThresholdPosition = rootRect.top + topThresholdInPixels;
+        const bottomThresholdPosition = rootRect.bottom - bottomThresholdInPixels;
+        
+        if (targetRect.top < topThresholdPosition || targetRect.bottom < topThresholdPosition)
+            return RelativePosition.ABOVE;
+        if (targetRect.top > bottomThresholdPosition || targetRect.bottom > bottomThresholdPosition)
+            return RelativePosition.BELOW;
+        else
+            return RelativePosition.BETWEEN;
     }
 }

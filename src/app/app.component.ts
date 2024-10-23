@@ -9,7 +9,7 @@ import { ItemDetailsHandlerService } from '@root/common/services/item-details-ha
 import { AboutMeComponent } from "./components/about-me/about-me.component";
 import { ContactMeComponent } from "./components/contact-me/contact-me.component";
 import { SocialMediaComponent } from "./components/social-media/social-media.component";
-import { SocialMediaBoundriesManager } from '@root/common/services/social-media-boundries-manager.service';
+import { SocialMediaBoundariesManager as SocialMediaBoundariesManager } from '@root/app/components/social-media/services/social-media-boundaries-manager.service';
 import { ScrollHandler } from '@root/common/services/scroll-handler.service';
 
 @Component({
@@ -19,19 +19,14 @@ import { ScrollHandler } from '@root/common/services/scroll-handler.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit, AfterViewInit{
+export class AppComponent implements OnInit{
   @ViewChild(ContactMeComponent, { read: ElementRef, static: true }) contactMeElementRef!: ElementRef<HTMLElement>;
   @ViewChild('menuItemDetailsContainer', { read: ViewContainerRef, static: true }) menuItemDetailsContainer!: ViewContainerRef;
   title = 'MeitalGlutenFree';
 
   constructor(
-    private itemDetailsHandler: ItemDetailsHandlerService,
-    private _socialMediaBoundriesManager: SocialMediaBoundriesManager){
-      
-  }
-  
-  ngAfterViewInit(): void {
-    this._socialMediaBoundriesManager.setBottomBoundaryElement(this.contactMeElementRef.nativeElement);
+    private itemDetailsHandler: ItemDetailsHandlerService){
+
   }
 
   ngOnInit(){
