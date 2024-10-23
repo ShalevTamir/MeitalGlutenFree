@@ -15,7 +15,7 @@ interface IntersectionOptions{
 @Injectable({
     providedIn: 'root'
 })
-export class IntersectionDetector{
+export class IntersectionManager{
     constructor(private _timeoutManager: TimeoutManager){}
 
     public detectIntersection(
@@ -44,7 +44,6 @@ export class IntersectionDetector{
         ){
 
             const options: IntersectionOptions = this.buildOptions(intersectionOptions);
-            // options.emitCooldown = 2000;
             let currentRelativePosition: RelativeTargetPosition | undefined;
             let emittedTime: number | undefined;
             

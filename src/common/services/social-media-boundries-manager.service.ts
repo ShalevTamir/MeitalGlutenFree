@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { IntersectionDetector } from "./intersection-detector.service";
+import { IntersectionManager } from "./intersection-manager.service";
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +11,7 @@ export class SocialMediaBoundriesManager{
     private _bottomBoundaryPromise: Promise<HTMLElement>;
     private _topBoundaryPromise: Promise<HTMLElement>;
 
-    constructor(private _intersectionDetector: IntersectionDetector){
+    constructor(private _intersectionDetector: IntersectionManager){
         this._bottomBoundaryPromise = new Promise((resolveMethod) => {
             this._resolveBottomBoundaryPromise = resolveMethod;
         })

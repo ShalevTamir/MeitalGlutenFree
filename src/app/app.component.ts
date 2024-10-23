@@ -9,7 +9,7 @@ import { ItemDetailsHandlerService } from '@root/common/services/item-details-ha
 import { AboutMeComponent } from "./components/about-me/about-me.component";
 import { ContactMeComponent } from "./components/contact-me/contact-me.component";
 import { SocialMediaComponent } from "./components/social-media/social-media.component";
-import { SocialMediaBoundriesManager } from '@root/common/services/social-media-intersection-manager.service';
+import { SocialMediaBoundriesManager } from '@root/common/services/social-media-boundries-manager.service';
 import { ScrollHandler } from '@root/common/services/scroll-handler.service';
 
 @Component({

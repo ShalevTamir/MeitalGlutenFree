@@ -4,7 +4,7 @@ import { MenuComponent } from "@root/app/components/menu/menu.component";
 import { ContactMeComponent } from "@root/app/components/contact-me/contact-me.component";
 import { AboutMeComponent } from "@root/app/components/about-me/about-me.component";
 import { TConstructor } from "../models/types";
-import { IntersectionDetector } from "./intersection-detector.service";
+import { IntersectionManager } from "./intersection-manager.service";
 
 interface ScrollOptions{
     scrollYOffset?: () => number,

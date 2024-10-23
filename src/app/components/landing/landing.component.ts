@@ -3,7 +3,7 @@ import { NavbarComponent } from "../navbar/navbar.component";
 import { SocialMediaComponent } from "../social-media/social-media.component";
 import { BubbleComponent } from "./components/bubble/bubble.component";
 import { insertDynamicNewLines } from '@root/common/utils/htmlUtils';
-import { SocialMediaBoundriesManager } from '@root/common/services/social-media-intersection-manager.service';
+import { SocialMediaBoundriesManager } from '@root/common/services/social-media-boundries-manager.service';
 import { ScrollHandler } from '@root/common/services/scroll-handler.service';
 import { MenuComponent } from '../menu/menu.component';
 

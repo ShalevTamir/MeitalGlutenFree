@@ -5,7 +5,7 @@ import { SocialType } from './models/enums/social-type.enum';
 import { SocialData } from './models/social-data';
 import { NgFor } from '@angular/common';
 import { BottomScrollDetector } from '@root/common/services/bottom-scroll-detector.service';
-import { IntersectionDetector } from '@root/common/services/intersection-detector.service';
+import { IntersectionManager } from '@root/common/services/intersection-manager.service';
 import { RefHtmlElement } from '@root/common/interfaces/RefHtmlElement.interface';
 import { ScrollHandler } from '@root/common/services/scroll-handler.service';
 

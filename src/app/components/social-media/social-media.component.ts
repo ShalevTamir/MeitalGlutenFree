@@ -10,8 +10,8 @@ import { NgFor } from '@angular/common';
 import { getParsedName, SocialType } from '@root/app/components/contact-me/models/enums/social-type.enum';
 import { BottomScrollDetector } from '@root/common/services/bottom-scroll-detector.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { IntersectionDetector } from '@root/common/services/intersection-detector.service';
-import { SocialMediaBoundriesManager } from '@root/common/services/social-media-intersection-manager.service';
+import { IntersectionManager } from '@root/common/services/intersection-manager.service';
+import { SocialMediaBoundriesManager } from '@root/common/services/social-media-boundries-manager.service';
 import { secondsToMillis } from '@root/common/utils/timeUtils';
 
 const animationDuration = '0.2s';
