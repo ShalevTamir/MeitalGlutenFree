@@ -16,7 +16,7 @@ export class AboutMeComponent implements AfterViewInit, RefHtmlElement{
 
   constructor(scrollHandler: ScrollHandler, elementRef: ElementRef){
     this.htmlRef = elementRef.nativeElement;
-    scrollHandler.AddScrollItem(AboutMeComponent, this);
+    scrollHandler.AddScrollItem(this);
   }
 
   ngAfterViewInit(): void {

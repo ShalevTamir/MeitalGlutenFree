@@ -5,74 +5,73 @@ import { ContactMeComponent } from "@root/app/components/contact-me/contact-me.c
 import { AboutMeComponent } from "@root/app/components/about-me/about-me.component";
 import { TConstructor } from "../models/types";
 import { IntersectionManager } from "./intersection-manager.service";
+import { injectDefaultValues } from "../utils/objectUtils";
 
-interface ScrollOptions{
-    scrollYOffset?: () => number,
-    scrollXOffset?: () => number
+interface ScrollCoordinates{
+    top: number,
+    left: number
 }
 
-interface ScrollItem{
-    htmlRefItem: RefHtmlElement
-    scrollOptions: ScrollOptions
+interface ScrollOptions{
+    topOffset?: number
 }
 
 @Injectable({
     providedIn: 'root'
 })
 export class ScrollHandler{
-    private _scrollItems = new Map<TConstructor<RefHtmlElement>, ScrollItem>();
+    private _scrollItems = new Map<TConstructor<RefHtmlElement>, RefHtmlElement>();
     private _defaultScrollOptions: ScrollOptions;
 
     constructor(){
         this._defaultScrollOptions = {
-            scrollXOffset: () => 0,
-            scrollYOffset: () => 0
+            topOffset: 0
         }
     }
 
-    public SetNavbarHtmlRef(elementRef: HTMLElement){
-        const computedStyle = getComputedStyle(elementRef);
-        this._defaultScrollOptions = {
-            scrollYOffset: () => (parseFloat(computedStyle.height) ) * -1,
-            scrollXOffset: () => parseFloat(computedStyle.width) * -1
-        };
+    public setDefaults(options: ScrollOptions){
+        this._defaultScrollOptions = injectDefaultValues(options, this._defaultScrollOptions);
+    }   
+
+    public AddScrollItem(scrollItem: RefHtmlElement){
+        this._scrollItems.set(this.getConstructor(scrollItem), scrollItem);
     }
-
-    public SetMenuElementRef(elementRef: RefHtmlElement, wrapperRef: HTMLElement){
-        this.AddScrollItem(
-            MenuComponent,
-            elementRef,
-            { 
-              scrollYOffset: () => {
-                const defaultScrollYOffset = this._defaultScrollOptions.scrollYOffset!();
-                const wrapperComputedStyle = getComputedStyle(wrapperRef);
-                return defaultScrollYOffset - parseFloat(wrapperComputedStyle.paddingTop)
-              }
-            });
-    }
-
-    public AddScrollItem(keyType: TConstructor<RefHtmlElement>, scrollItem: RefHtmlElement, scrollOptions?: ScrollOptions){
-        scrollOptions = {...this._defaultScrollOptions, ...scrollOptions};
-        this._scrollItems.set(keyType, {htmlRefItem: scrollItem, scrollOptions: scrollOptions});
-    }
-
-    public ScrollTo(scrollItemType: TConstructor<RefHtmlElement>){
-        const scrollItem: ScrollItem | undefined = this._scrollItems.get(scrollItemType);
-        if (scrollItem === undefined)
-            throw new Error("Unable to find " + typeof(scrollItemType) + "as a scroll item");
-
-        const scrollItemRect = scrollItem.htmlRefItem.htmlRef.getBoundingClientRect();
-        const scrollOptions = scrollItem.scrollOptions;
+    
+    public ScrollTo(scrollItemKey: TConstructor<RefHtmlElement>){
+        if (!this._scrollItems.has(scrollItemKey))
+            throw new Error("Unable to find " + typeof(scrollItemKey) + "as a scroll item");
+        const scrollItem: RefHtmlElement = this._scrollItems.get(scrollItemKey)!;
         
-        const topOffset = scrollItemRect.top + window.scrollY + scrollOptions.scrollYOffset!();
-        const leftOffset = scrollItemRect.left + window.scrollX + scrollOptions.scrollXOffset!();
-
+        const scrollItemHtmlEl = scrollItem.htmlRef;
+        const scrollItemBoundingRect = scrollItemHtmlEl.getBoundingClientRect();
+        const scrollCoords: ScrollCoordinates = {
+            top: scrollItemBoundingRect.top + window.scrollY,
+            left: scrollItemBoundingRect.left + window.scrollX
+        }
+        
         window.scrollTo(
             {
-                top: topOffset,
-                left: leftOffset,
+                ...scrollCoords,
                 behavior: 'smooth'
             });
     }
+    
+    private calcScrollCoordinates(elementToScrollTo: HTMLElement): ScrollCoordinates{
+        const highestChildTopCoordinate = this.extractHighestChildTopCoordinate(elementToScrollTo);
+        const scrollItemTopCoordinate = elementToScrollTo.getBoundingClientRect().top;
 
+        console.log(elementToScrollTo);
+        console.log(highestChildTopCoordinate, scrollItemTopCoordinate);
+        return {top: 0,left: 0};
+    }
+    
+    private extractHighestChildTopCoordinate(parentElement: HTMLElement){
+        const children: Element[] = Array.prototype.slice.call(parentElement.children);
+        const childrenTopOffsets: number[] = children.map(child => child.getBoundingClientRect().top);        
+        return Math.min(...childrenTopOffsets);
+    }
+
+    private getConstructor<T extends RefHtmlElement>(instance: T): TConstructor<T>{
+        return instance.constructor as TConstructor<T>
+    }
 }

@@ -22,7 +22,7 @@ export class ContactMeComponent implements RefHtmlElement{
   htmlRef: HTMLElement;
   constructor(private _socialDataManager: SocialDataManager, scrollHandler: ScrollHandler, socialMediaBoundriesManager: SocialMediaBoundariesManager, elementRef: ElementRef){
     this.htmlRef = elementRef.nativeElement;
-    scrollHandler.AddScrollItem(ContactMeComponent, this);
+    scrollHandler.AddScrollItem(this);
     socialMediaBoundriesManager.setBoundaryElement(BoundaryType.BOTTOM, this.htmlRef);
   }
 

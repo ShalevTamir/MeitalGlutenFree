@@ -22,7 +22,8 @@ export class NavbarComponent implements AfterViewInit{
   protected menuComponent: TConstructor<MenuComponent> = MenuComponent;
 
   constructor(protected scrollHandler: ScrollHandler, elementRef: ElementRef){
-    scrollHandler.SetNavbarHtmlRef(elementRef.nativeElement)
+    const nativeElement: HTMLElement = elementRef.nativeElement;
+    scrollHandler.setDefaults({ topOffset: nativeElement.offsetHeight });
   }
   
   ngAfterViewInit(): void{
