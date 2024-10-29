@@ -27,10 +27,10 @@ export class MenuComponent implements RefHtmlElement, AfterViewInit{
       new CardData(298, "עוגת שוקולד עשירה", "עוגת שוקולד עשירה עם מרקם רך ונימוח. עשויה משוקולד איכותי ומושלמת לכל אירוע", "sponge-cake.png")
     ];
     this.htmlRef = _elementRef.nativeElement;
+    this._scrollHandler.AddScrollItem(this);
   }
 
   ngAfterViewInit(): void {
-    this._scrollHandler.SetMenuElementRef(this, this._wrapper.nativeElement);
   }
 
   handleViewItem(cardId: number){
