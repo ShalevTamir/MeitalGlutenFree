@@ -3,17 +3,18 @@ import { ScrollOptions } from "../interfaces/scroll-options.interface";
 import { ScrollItem } from "../types/scroll-types";
 import { injectDefaultValues } from "@root/common/utils/objectUtils";
 
+
+const DEFAULT_SCROLL_OPTIONS: ScrollOptions = {
+    topOffset: 0
+}
+
 export abstract class BaseScrollBreakpoint{
-    private _defaultScrollOptions: ScrollOptions;
     // key - a scroll item, value - it's corresponding custom scroll options for the specific scroll breakpoint
     private _customScrollOptions: Map<ScrollItem, ScrollOptions>
-    private _screenBreakpointResolution: number;
+    private _screenBreakpointWidth: number;
 
-    constructor(screenBreakpointResolution: number){
-        this._screenBreakpointResolution = screenBreakpointResolution;
-        this._defaultScrollOptions = {
-            topOffset: 0
-        }
+    constructor(screenBreakpointWidth: number){
+        this._screenBreakpointWidth = screenBreakpointWidth;
         this._customScrollOptions = new Map();
     }
 
@@ -23,12 +24,20 @@ export abstract class BaseScrollBreakpoint{
 
     public getScrollOptions(scrollItem: ScrollItem): ScrollOptions{
         if (this._customScrollOptions.has(scrollItem))
-            return injectDefaultValues(this._defaultScrollOptions, this._customScrollOptions.get(scrollItem)!);
+            return injectDefaultValues(DEFAULT_SCROLL_OPTIONS, this._customScrollOptions.get(scrollItem)!);
         else
-            return this._defaultScrollOptions;
+            return DEFAULT_SCROLL_OPTIONS;
     }
 
-    public get ScreenBreakpointResolution(){
-        return this._screenBreakpointResolution;
+    public static getDefaults(): ScrollOptions{
+        return DEFAULT_SCROLL_OPTIONS;
+    }
+
+    public hasCustomScrollOptions(scrollItem: ScrollItem): boolean{
+        return this._customScrollOptions.has(scrollItem);
+    }
+
+    public get ScreenBreakpointWidth(){
+        return this._screenBreakpointWidth;
     }
 }

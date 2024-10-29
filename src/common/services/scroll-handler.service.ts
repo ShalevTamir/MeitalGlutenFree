@@ -43,6 +43,7 @@ export class ScrollHandler{
 
     private calcScrollCoords(scrollItem: ScrollItem): ScrollCoordinates{
         const scrollOptions = this._scrollOptionsManager.getCurrentScrollOptions(scrollItem);
+        console.log(scrollOptions);
 
         const scrollItemHtmlRef: RefHtmlElement = this._scrollItems.get(scrollItem)!;
         const scrollItemHtmlEl = scrollItemHtmlRef.htmlRef;
