@@ -22,9 +22,9 @@ export class MenuComponent implements RefHtmlElement, AfterViewInit{
 
   constructor(private _elementRef: ElementRef, private _itemDetailsHandler: ItemDetailsHandlerService, private _scrollHandler: ScrollHandler){
     this.menuItems = [
-      new CardData(298, "עוגת שוקולד עשירה", "עוגת שוקולד עשירה עם מרקם רך ונימוח. עשויה משוקולד איכותי ומושלמת לכל אירוע", "chocolate-cake.png"),
-      new CardData(298, "עוגת שוקולד עשירה", "עוגת שוקולד עשירה עם מרקם רך ונימוח. עשויה משוקולד איכותי ומושלמת לכל אירוע", "white-cake.png"),
-      new CardData(298, "עוגת שוקולד עשירה", "עוגת שוקולד עשירה עם מרקם רך ונימוח. עשויה משוקולד איכותי ומושלמת לכל אירוע", "sponge-cake.png")
+      new CardData(298, "עוגת שוקולד עשירה", "עוגת שוקולד עשירה עם מרקם רך ונימוח. עשויה משוקולד איכותי ומושלמת לכל אירוע", "chocolate-cake.jpg"),
+      new CardData(298, "עוגת ווניל משובחת", "עוגת ווניל עשירה בטעמים. עוגה רכה שמתמזגת עם קצפה עשירה ובוטנים קצוצים, ליצירת טעם מעודן", "white-cake.png"),
+      new CardData(298, "עוגת ספוג", "עוגת ספוג רכה ואוורירית המלווה בשכבת שוקולד עשירה בתוספת סוכריות לבנות המפזרות מתיקות ואהבה", "sponge-cake.jpg")
     ];
     this.htmlRef = _elementRef.nativeElement;
     this._scrollHandler.AddScrollItem(this);
